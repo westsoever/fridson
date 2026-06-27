@@ -9,6 +9,13 @@ A tenant scans a broken asset and taps the problem — Fridson writes a structur
 
 **Live demo:** [fridson.lovable.app](https://fridson.lovable.app)
 
+## Repos & workspace
+Two separate repos live side by side in this workspace:
+- **Knowledgespace** (this vault) — `github.com/westsoever/fridson` — planning, maps, team plans, docs.
+- **The app** — `github.com/westsoever/fridson-app` — cloned at `fridson-app/` (Lovable-connected; Vite + React + TS + Bun + Supabase).
+
+Agents working in this vault can directly edit `fridson-app/`. The app folder is git-ignored here and keeps its own git history — commits inside `fridson-app/` push to the app repo (and reach Lovable). Don't mix the two. Details in root `CLAUDE.md → The app code lives here too`.
+
 ---
 
 ## Where to look

@@ -23,6 +23,14 @@ Knowledge operating system for [your project] — built on PARA + Maps of Conten
 - `SOUL.md` — who you are, values, constraints
 - `CRITICAL_FACTS.md` — always-loaded key facts
 
+## The app code lives here too — `fridson-app/`
+This vault (repo `github.com/westsoever/fridson`) is the **knowledgespace** (planning, maps, team comms). The **actual product** is cloned at `fridson-app/` — a *separate* git repo (`github.com/westsoever/fridson-app`, connected to Lovable).
+
+- ✅ **Agents can edit the app directly** in `fridson-app/` — it's inside the workspace, so reads/writes work with no extra permissions.
+- 🔒 **Two repos stay separate.** `fridson-app/` has its own `.git`, its own `origin`, and its own `.lovable` link. It is git-ignored by this vault (`.gitignore`) and excluded from Obsidian (`.obsidian/app.json`) — so vault notes and app code never mix.
+- 📦 **Commits/pushes from inside `fridson-app/` go to the app repo** (and flow to Lovable). Commits at the vault root go to the knowledgespace repo. Never `git add` across the boundary.
+- 🧭 When a task says "build/change the app", work in `fridson-app/` (stack: Vite + React + TypeScript + Bun + Supabase, see `fridson-app/AGENTS.md`). When it says "plan/document", work in the PARA folders.
+
 ## Session skills
 | Skill | When |
 |-------|------|

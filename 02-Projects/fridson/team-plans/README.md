@@ -4,6 +4,8 @@ The single [[ACTIVE_PLAN]] split into **4 self-contained tracks** so the whole t
 
 > **Golden rule:** stay inside your *You own* boundary. If you need something from another track, use the data shape / event names in [[INTERFACES]] — don't reach into their files.
 
+> **Where the code lives:** the app is the separate repo `github.com/westsoever/fridson-app`, cloned in-workspace at `fridson-app/` (Lovable-connected). All track build-work happens there; pages live under `fridson-app/src/`, Supabase under `fridson-app/supabase/`. Branches/PRs below are in the **app repo**, not this knowledgespace vault. (Vault = plans/docs only.) See root `CLAUDE.md → The app code lives here too`.
+
 ---
 
 ## Ownership matrix (who does what, where)

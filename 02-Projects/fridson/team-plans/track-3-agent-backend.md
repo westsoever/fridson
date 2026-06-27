@@ -4,7 +4,9 @@
 
 > Read [[INTERFACES]] §3 (providers), §4 (events you emit), §5 (approve API). See [[RESOLUTION-AGENT]] for the detailed spec.
 
-> ✅ **SHIPPED 2026-06-27** (committed in `fridson-app` `403ee22`). Self-contained Deno edge function `supabase/functions/agent/**` runs the whole loop — select → RFQ → bids → negotiate → book → PM approve — emitting all §4 events; §5 decision API implemented; 10 Deno tests pass. **Runs on Supabase Edge — Azure NOT needed.** Wired: `submitReport` now invokes it async (202). **Remaining is manual:** `supabase functions deploy agent`; set `SUPABASE_SERVICE_ROLE_KEY` (+ optional `RESEND_API_KEY`/`AGENT_LIVE_EMAIL=1` for real email — else labelled stubs).
+> ✅ **SHIPPED + PUSHED 2026-06-27** (`403ee22` → `origin/main` `4e36b43`). Self-contained Deno edge function `supabase/functions/agent/**` runs the whole loop — select → RFQ → bids → negotiate → book → PM approve — emitting all §4 events; §5 decision API implemented; 10 Deno tests pass. **Runs on Supabase Edge — Azure NOT needed.** Wired: `submitReport` now invokes it async (202).
+>
+> ⚠️ **Merge note:** main now also carries Alex's `ai-agent-flow` — durable **DB webhook** agents (`process-triage`/`process-research` + `report_agent_webhooks` migration). Both paths fire on a report; **reconcile to one canonical trigger** (the durable webhook is more robust) before stage. **Remaining is manual:** `bunx supabase@latest functions deploy agent process-triage process-research` (needs access token); set `SUPABASE_SERVICE_ROLE_KEY` (+ optional `RESEND_API_KEY`/`AGENT_LIVE_EMAIL=1` for real email — else labelled stubs).
 
 ---
 

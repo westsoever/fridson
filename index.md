@@ -10,6 +10,11 @@
 | `CRITICAL_FACTS.md` | Always-loaded key facts (~80 tokens) |
 | `CLAUDE.md` | Vault rules, folder map, skills index |
 
+## Codebase (separate repo)
+| Path | Purpose |
+|------|---------|
+| `fridson-app/` | The **actual app** — separate repo `github.com/westsoever/fridson-app` (Lovable-connected, Vite/React/Bun/Supabase). Cloned in-workspace so agents can edit it. Git-ignored by this vault; commits there go to the app repo. See `CLAUDE.md → The app code lives here too`. |
+
 ## Active Projects
 | File | Status |
 |------|--------|

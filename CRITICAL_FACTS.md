@@ -11,3 +11,4 @@ tokens: ~80
 **Tools stack:** Claude Code, Cursor (claimed), Lovable, Azure credits, sensors
 **Active focus:** Pick one sensor + use case → dashboard + Slack alert → pitch Sun 16:00
 **Goal:** Win Z2D demo judging · submission by Sun 15:00 · 28 Jun 2026
+**Repos:** vault = `westsoever/fridson` (this knowledgespace) · app = `westsoever/fridson-app` cloned at `fridson-app/` (Lovable, editable by agents, separate git)

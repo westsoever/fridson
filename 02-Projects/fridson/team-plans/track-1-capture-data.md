@@ -5,7 +5,7 @@
 
 > Read [[INTERFACES]] sections 1–3. Those shapes are *your* deliverable.
 
-> ✅ **SHIPPED 2026-06-27** (committed in `fridson-app` `403ee22`, not yet pushed). Data spine built: 4 migrations (asset coords · full report record + trigger · 55-row provider directory · events feed + realtime), `floorplan.svg` + coord map, DB types. Deviations logged in [[INTERFACES]]. **Remaining is manual:** apply migrations to Supabase (`supabase db push` / Lovable) — see [[ACTIVE_PLAN#Blockers]].
+> ✅ **SHIPPED + PUSHED 2026-06-27** (`403ee22`, now on `origin/main` → `4e36b43`). Data spine built: 4 migrations (asset coords · full report record + trigger · 55-row provider directory · events feed + realtime), `floorplan.svg` + coord map, DB types. Deviations logged in [[INTERFACES]]. **Remaining is manual:** apply migrations to Supabase — via Lovable's Supabase sync or `bunx supabase@latest db push` (needs access token + DB password). See [[ACTIVE_PLAN#Blockers]].
 
 ---
 

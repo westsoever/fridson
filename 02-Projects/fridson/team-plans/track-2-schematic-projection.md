@@ -4,7 +4,7 @@
 
 > Read [[INTERFACES]] §2 (coords) + §4 (event feed). Build against **mock events** first so you don't wait on Track 3.
 
-> ✅ **SHIPPED 2026-06-27** (committed in `fridson-app` `403ee22`). Added `/projection` (stage view: phase rail + schematic + step-card feed) and `/schematic` (pulsing marker). Scripted mock emitter plays the full 8-step sequence (~54s, pinpoint at 1.5s); real Supabase `events` channel is flag/URL gated. tsc + build pass. **Remaining is manual:** on the stage laptop, open `/projection?feed=real` once migrations + agent are deployed.
+> ✅ **SHIPPED + PUSHED 2026-06-27** (`403ee22` → `origin/main` `4e36b43`). Added `/projection` (stage view: phase rail + schematic + step-card feed) and `/schematic` (pulsing marker). Scripted mock emitter plays the full 8-step sequence (~54s, pinpoint at 1.5s); real Supabase `events` channel is flag/URL gated. tsc + build pass. **Remaining is manual:** on the stage laptop, open `/projection?feed=real` once migrations + agent are deployed.
 
 ---
 

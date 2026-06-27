@@ -11,6 +11,9 @@
   - [[02-Projects/fridson/ROADMAP|Build Roadmap]] · [[02-Projects/fridson/RESOLUTION-AGENT|Resolution Agent spec]]
   - [[02-Projects/fridson/MVP-FLOW|MVP Flow — Scan, Tap, Route]] · [[02-Projects/fridson/LOVABLE-PROMPT|Lovable Prompt + Validation Map]]
 
+## Codebase
+- **App repo** `fridson-app/` — the actual product (`github.com/westsoever/fridson-app`, Lovable-connected). Cloned in-workspace; agents edit it directly. Separate git history — see root `CLAUDE.md → The app code lives here too`.
+
 ## Wiki
 - [[06-Wiki/Problem|Problem — Office Lifecycle Management]]
 - [[06-Wiki/Problem-Analysis|Problem Analysis — Pain points, gaps, Z2D readiness]]
@@ -34,5 +37,6 @@
 
 ## Recent Captures
 *Inbox clear · 2026-06-27*
-- [[02-Projects/fridson/team-plans/README|Team Plans]] — plan split into 4 parallel owner tracks + [[02-Projects/fridson/team-plans/INTERFACES|shared contract]]
-- Demo live at [fridson.lovable.app](https://fridson.lovable.app); capture→route + admin built
+- [[02-Projects/fridson/team-plans/README|Team Plans]] — 4 tracks all **shipped** (committed in `fridson-app` `403ee22`); deploy gates remain
+- [[02-Projects/fridson/pitch/script|3-min pitch script]] · [[02-Projects/fridson/pitch/business-case|business case]] · [[02-Projects/fridson/pitch/ecosystem|ecosystem]] · [[02-Projects/fridson/pitch/logistics|logistics]]
+- Demo live at [fridson.lovable.app](https://fridson.lovable.app); full agent loop + projection built, pending deploy

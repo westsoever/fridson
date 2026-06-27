@@ -75,6 +75,8 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 - [[MVP-FLOW]] — scan→tap→route spec · [[RESOLUTION-AGENT]] — route→bid→negotiate→book spec
 - [[LOVABLE-PROMPT]] — exact pages, seed data, routing logic already shipped to Lovable
 
+**Where the code is:** the app is cloned in-workspace at `fridson-app/` (repo `github.com/westsoever/fridson-app`, Lovable-connected, separate git history). Agents can edit it directly; commits there go to the app repo, not this vault. Stack: Vite + React + TS + Bun + Supabase (`fridson-app/AGENTS.md`). See root `CLAUDE.md → The app code lives here too`.
+
 **Current build state (verify, don't assume):**
 - Live app: [fridson.lovable.app](https://fridson.lovable.app) — home lists 5 assets; `/r/printer-3f` loads scan→tap.
 - Built so far: Capture (scan→tap) + basic routing + admin/reports page (Supabase via Lovable).
@@ -243,12 +245,24 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ---
 
 ## Blockers
-- **Azure credits** — $1,000 unclaimed (https://luma.link/aMPPeE5k4A); needed to host the agent service (Phase 3)
-- **Brand spelling** — source doc says "Fritzson", domain/repo say "Fridson"; team must pick one before slides
-- **Schematic asset** — need a floorplan image + asset coordinates for Phase 2 (can be hand-made)
-- **Demo vendor inboxes** — need 2–3 controlled inboxes (and optionally a sandbox phone number) for real RFQ/negotiation
-- **Scope discipline** — Phases 3–6 must not break the Phase 1 must-have; gate agent work behind Phases 1–2
-- **3-minute timing** — the live flow must be visible+explained in ~60s; needs rehearsal
+
+**Deployment gates (turn the demo live):**
+- [x] 🌐 **Push app to Lovable** — ✅ done. `origin/main` = `4e36b43` = my `403ee22` (4-track build) **+ merge of Alex's `ai-agent-flow`** (durable webhook agents: `process-triage`/`process-research` + `report_agent_webhooks` migration). Lovable rebuilds the frontend from this.
+- [ ] 🔑 **Apply 6 migrations** — via **Lovable's Supabase integration** (auto on sync) *or* authenticated CLI: `bunx supabase@latest link --project-ref yyidatcqbvsbntdavmww && bunx supabase@latest db push`. Creates `providers` (55) · `events` · asset coords · full report record · triaging status · agent webhooks. ⚠️ No `SUPABASE_ACCESS_TOKEN`/DB password in this session — couldn't run from here.
+- [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). Needs access token.
+- [ ] 🔑 **Set function secrets** (Supabase dashboard) — `SUPABASE_SERVICE_ROLE_KEY` (live events/writes); optional `RESEND_API_KEY` + `AGENT_LIVE_EMAIL=1` for real RFQ email (else labelled stubs); `LOVABLE_API_KEY`/`SLACK_API_KEY` for existing triage
+- [ ] ❓ **Reconcile dual agent trigger** — `submitReport`→`agent` fetch (mine) **and** the `reports` DB webhook → `process-triage`/`process-research` (Alex's) both fire on a report. Pick one canonical path (Alex's durable webhook is more robust) before stage to avoid double runs.
+- [ ] 🖥️ **Stage feed** — open `/projection?feed=real` on the demo laptop; confirm Realtime on `events`
+
+**Resolved this session:** ~~Azure credits~~ (agent runs on Supabase Edge — Azure NOT needed) · ~~Schematic asset~~ (`floorplan.svg` + coords seeded) · ~~vendor inboxes for the loop~~ (stubbed fallback works; only needed for *real* email).
+
+**Still open (human decisions / logistics — see [[pitch/logistics]]):**
+- [ ] ❓ **Brand spelling** — "Fritzson" (source) vs "Fridson" (domain/repo/live app); recommend **Fridson**, pick before slides
+- [ ] 🧑 **3-minute timing** — full-team dry-run on real hardware (projection runs ~54s; needs rehearsal)
+- [ ] 🧑 **QR prints + hardware** — 5 codes, presenter, phone, projector, same network
+- [ ] ❓ **Two agent layers** — existing Lovable triage/research (Slack) + new resolution loop both fire on a report; decide whether to mute triage Slack during the live run
+- [ ] ❓ **Dangling git remote** — vault repo has extra remote `fridson-app → westsoever/fridson-app`; a stray push could send vault notes to the app repo. Decide: `git remote remove fridson-app`.
+- [ ] 🔑 **Committed `.env` in app repo** — only anon/publishable keys (public-safe); no service-role key present. Low risk, but avoid adding secrets to it.
 
 ---
 
@@ -268,3 +282,7 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-27 | **Source of truth locked** — [[06-Wiki/decisions/2026-06-27-final-commitment]]. Plan rebuilt (make-plan style) around the 3-min demo arc: onboarding+schematic → scan → structured report → pinpoint → route/bid/negotiate/book → approve. Resolution loop promoted from stretch to demo centerpiece. Added [[ROADMAP]] |
 | 2026-06-27 | Inbox processed — final-commitment → 06-Wiki/decisions; stakeholder map → 05-Knowledge; superseded ideation (final-discussion, data-brain ×2, painpoints, initial-feedback) → 08-Archive/z2d-ideation-superseded |
 | 2026-06-27 | Split plan into 4 parallel tracks for the team → [[team-plans/README]] (Capture&Data · Schematic&Projection · Agent Backend · Pitch&Business) + [[team-plans/INTERFACES]] shared contract so tracks build simultaneously without file collisions |
+| 2026-06-27 | Track 1: scan→tap verified for all 5 assets + reports persisting full record. Set ▶ NEXT per track: Chris=seed coords+50 providers (unblocks team), Slavi=projection+mock events, Alex=agent skeleton+selection (mocked), Lennert=lock brand spelling + redeem Azure (unblocks Alex) |
+| 2026-06-27 | **App repo cloned in-workspace** at `fridson-app/` (separate repo `westsoever/fridson-app`, Lovable-connected) so agents in this vault can edit the app directly. Git-ignored + Obsidian-excluded so the two repos stay separate. Documented in `CLAUDE.md`, `index.md`, README, team-plans. Flagged: dangling `fridson-app` remote on the vault repo + committed `.env` in app repo. |
+| 2026-06-27 | **All 4 tracks built in parallel** (4 subagents) + integrated, committed in `fridson-app` `403ee22` (not pushed): T1 data spine (migrations/coords/floorplan/55 providers/events), T2 `/projection`+`/schematic` w/ mock+real feed, T3 Deno resolution-agent (select→bid→negotiate→book→approve, 10 tests, Azure not needed), T4 `pitch/` docs. Wired `submitReport`→agent; fixed a `tsc` regression (supabase single-row inference under the bigger schema). tsc + vite build green. Remaining = deploy gates (push/migrate/deploy/env) + human logistics. |
+| 2026-06-27 | **App pushed to Lovable** — `403ee22` is now on `origin/main`, then merged with Alex's `ai-agent-flow` (durable webhook agents: `process-triage`/`process-research` + `report_agent_webhooks` migration) → `4e36b43`. Lovable rebuilds the frontend from this. Migrations (now 6) + edge-function deploy still pending: handled by Lovable's Supabase sync or an authenticated CLI — no `SUPABASE_ACCESS_TOKEN`/DB password available this session. Flagged a **dual agent-trigger** to reconcile (my `submitReport`→agent fetch + Alex's report DB webhook). |

@@ -2,6 +2,8 @@
 
 This is the **only surface shared between tracks**. Agree on it early; then everyone builds in parallel against these shapes instead of each other's code. If a shape must change, post in the team chat and update this file — don't silently diverge.
 
+> **Where these live in code:** the app is at `fridson-app/` (repo `westsoever/fridson-app`). Schema/seed → `fridson-app/supabase/`; pages & components → `fridson-app/src/`. The shapes below are the contract; the implementation is in those files.
+
 ---
 
 ## 1. The report object (owned by Track 1)
@@ -68,3 +70,27 @@ Track 3 **emits** these; Track 2 **renders** each as a step card in the projecti
 | Date | Change |
 |------|--------|
 | 2026-06-27 | Contract drafted from [[ACTIVE_PLAN]] + [[INTERFACES]] split |
+| 2026-06-27 | **Track 1 locked the data layer.** Schema/seed shipped in `fridson-app/supabase/migrations/20260627190000–190300_track1_*.sql`. Deviations from the draft below — they reflect what the working app already implements. |
+
+---
+
+## Track 1 implementation notes (authoritative — what's actually in the DB)
+
+**`reports`** — the row now carries the full §1 record (denormalized on insert by a DB trigger, so the capture page is unchanged):
+`id, asset_id, asset_label, zone, location {floor,x,y}, issue, issue_label, route, status, ai_summary, ai_suggestion, ai_severity, ai_error, contractors, approved_at, researched_at, created_at`.
+- **`route` values are `inhouse` | `external`** (NOT `in-house` | `contractor`). Mapping: `inhouse` = in-house FM, `external` = contractor. The whole app + Slack routing already use these.
+- **`status` values are `awaiting_ai` | `awaiting_approval` | `approved` | `researching` | `done` | `failed`** (NOT `open|routing|bidding|booked|approved|closed`). These are the lifecycle states Track 3's agent actually drives. `approved` is common to both.
+- **`issue`** is the §1 field name; it's a stored mirror of `issue_label` (the source of truth). Read either.
+- `asset_label`, `zone`, `location` are copied from the asset at insert time (BEFORE INSERT trigger) so a report is self-contained — no join needed for Track 2 markers / Track 3 actions.
+
+**`assets`** — added `location jsonb` = `{ floor, x, y }`, `x,y` are 0–1 fractions of `/floorplan.svg` (viewBox 800×1200, origin top-left), `floor` = storey (basement = 0). Seeded for all 5 assets. Coords also in `fridson-app/public/floorplan.coords.json`.
+
+**Floorplan** — `fridson-app/public/floorplan.svg` (5 stacked floors 4F→B1). Served at `/floorplan.svg`. Track 2: multiply asset `x,y` by rendered w/h to place a marker.
+
+**`providers`** — `{ id, name, trade, zone, email, rate_eur, created_at }`, 55 rows (≈50), all emails `*@demo.test`. Selectable via `?select=id,name,trade,zone,email,rate_eur` (matches Track 3's `fetchProviders`).
+- `trade` ∈ `plumbing | hvac | electrical | appliance | av | cleaning | it | mechanical | general` (covers Track 3's full `Trade` set).
+- `zone` ∈ floor code `B1|1F|2F|3F|4F` **or** `ALL` (city-wide). Suggested match: `provider.zone = 'ALL' OR provider.zone = split_part(asset.zone,'-',1)`. (Track 3's `floorOf` leaves `ALL` un-tokenised, so ALL vendors rank as out-of-floor fallback — intended.)
+- issue→trade (matches Track 3's `tradeForIssue`): printer→`it`; bathroom→`plumbing` (or `cleaning`); pump→`mechanical` (or `plumbing` on leak); meeting_room→`av` (or `hvac` on too cold/hot); kitchen→`appliance` (or `cleaning` on spill); else→`general`.
+
+**`events`** — `{ id, report_id (FK), type, payload jsonb, ts, created_at }`. RLS: public read + insert. Realtime enabled (`supabase_realtime` publication) on `events` + `reports`; poll `ORDER BY ts` is the fallback.
+- **Track 1 auto-emits `report.created` + `location.pinpointed`** via DB trigger on report insert (they're inherent to report creation). **Track 3 emits the rest** (`providers.selected`, `rfq.sent`, `bid.received`, `negotiation.round`, `slot.booked`, `pm.decision`). `type` is free text (canonical list in the table comment) so Track 3 isn't blocked by an enum.
