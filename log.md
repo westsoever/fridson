@@ -5,3 +5,4 @@
 
 | Date | Summary |
 |------|---------|
+| 2026-06-27 | Session opened vault for the first time — no active projects exist yet. Next: run `/plan` to create first project. |

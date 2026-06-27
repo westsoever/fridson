@@ -24,3 +24,13 @@ Before any major decision, ask:
 - **Project:** Fintech app for credit analysis
 - **Team:** Fridson (3 members)
 - **Hard deadline:** Demo on Sunday 28 June 2026, 16:00 CEST
+
+## How to use this in-session
+
+After loading, remind yourself and the user:
+- Every feature decision → does it make the **product stronger**?
+- Every design choice → does it sharpen the **problem narrative**?
+- Every data point gathered → is it **validation** for market demand?
+- Every hour spent → are you moving toward a **demoable, catchy** story?
+
+When reviewing code, features, or plans, score the current state against all four criteria and flag the weakest one as the next focus.
