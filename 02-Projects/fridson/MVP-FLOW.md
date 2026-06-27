@@ -194,8 +194,15 @@ Report (created on tap)
 
 ---
 
+## What happens after the ticket
+
+Capture → Route is the front door. The next act is **Resolve**: when a ticket is for a broken/high-cost asset, an AI [[RESOLUTION-AGENT|Resolution Agent]] researches the cheapest replacement, then emails and calls vendors to gather options and negotiate price — report becomes resolution. This is the headline stretch feature, built only after this flow is solid.
+
+---
+
 ## Related
 
 - [[06-Wiki/Problem|Problem — Office Lifecycle Management]]
 - [[02-Projects/z2d-lifecycle/ACTIVE_PLAN|Active Plan]]
+- [[RESOLUTION-AGENT|Resolution Agent — Resolve layer]]
 - [[04-Resources/Z2D/finding-the-problem|Finding the Problem]]

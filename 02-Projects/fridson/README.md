@@ -4,7 +4,7 @@ Team Fridson · Z2D Cohort #3 · Copenhagen · 27–28 Jun 2026
 
 Predictive office lifecycle management — sensor data → dashboard → automated service alerts.
 
-**Active plan:** [[ACTIVE_PLAN]] · **MVP flow:** [[MVP-FLOW]] · **Lovable prompt:** [[LOVABLE-PROMPT]] · **Problem:** [[06-Wiki/Problem]] · **Team:** [[team]]
+**Active plan:** [[ACTIVE_PLAN]] · **MVP flow:** [[MVP-FLOW]] · **Resolution Agent:** [[RESOLUTION-AGENT]] · **Lovable prompt:** [[LOVABLE-PROMPT]] · **Problem:** [[06-Wiki/Problem]] · **Team:** [[team]]
 
 ---
 
