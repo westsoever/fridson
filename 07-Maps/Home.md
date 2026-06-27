@@ -6,9 +6,10 @@
 ---
 
 ## Active Projects
-- [[02-Projects/z2d-lifecycle/ACTIVE_PLAN|Z2D Lifecycle Platform]] — Team Fridson · demo Sun 28 Jun 16:00
-  - [[02-Projects/z2d-lifecycle/MVP-FLOW|MVP Flow — Scan, Tap, Route]]
-  - [[02-Projects/z2d-lifecycle/LOVABLE-PROMPT|Lovable Prompt + Validation Map]]
+- [[02-Projects/fridson/ACTIVE_PLAN|Fridson — AI Employees for Property Management]] — Team Fridson · demo Sun 28 Jun 16:00
+  - [[02-Projects/fridson/team-plans/README|Team Plans — 4 parallel tracks]] (Chris=data · Slavi=frontend · Alex=agent · Lennert=pitch)
+  - [[02-Projects/fridson/ROADMAP|Build Roadmap]] · [[02-Projects/fridson/RESOLUTION-AGENT|Resolution Agent spec]]
+  - [[02-Projects/fridson/MVP-FLOW|MVP Flow — Scan, Tap, Route]] · [[02-Projects/fridson/LOVABLE-PROMPT|Lovable Prompt + Validation Map]]
 
 ## Wiki
 - [[06-Wiki/Problem|Problem — Office Lifecycle Management]]
@@ -33,5 +34,5 @@
 
 ## Recent Captures
 *Inbox clear · 2026-06-27*
-- [[02-Projects/z2d-lifecycle/LOVABLE-PROMPT|Lovable prompt + validation map]] ready to send for first prototype build
-- [[02-Projects/z2d-lifecycle/MVP-FLOW|MVP Flow — Scan, Tap, Route]] drafted for Z2D demo wedge
+- [[02-Projects/fridson/team-plans/README|Team Plans]] — plan split into 4 parallel owner tracks + [[02-Projects/fridson/team-plans/INTERFACES|shared contract]]
+- Demo live at [fridson.lovable.app](https://fridson.lovable.app); capture→route + admin built

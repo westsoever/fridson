@@ -93,9 +93,9 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ## Phase 1 — Capture → Structured Report (must-have · mostly built)
 *Step 2–3 of the flow. The report object is the spine everything else hangs on.*
 
-- [ ] 🤖 ▶ NEXT Verify scan→tap works for all **5 assets** on a phone; both routes distinct (printer/out-of-paper → in-house; bathroom/leak → contractor) with success copy "Sent to facility team" vs "Sent to contractor"
-- [ ] 🤖 Confirm each report persists a **structured record**: `asset · location/zone · issue · route · timestamp` (the source-of-truth report shape)
-- [ ] 🤖 Confirm **admin/reports page** shows the persisted report (demo backup if anything live fails)
+- [x] 🤖 Verify scan→tap works for all **5 assets** on a phone; both routes distinct (printer/out-of-paper → in-house; bathroom/leak → contractor) with success copy "Sent to facility team" vs "Sent to contractor" ✅ confirmed working
+- [x] 🤖 Confirm each report persists a **structured record**: `asset · location/zone · issue · route · timestamp` (the source-of-truth report shape) ✅ persisting with full record
+- [ ] 🤖 ▶ NEXT Confirm **admin/reports page** shows the persisted report (demo backup if anything live fails)
 
 **Verification checklist:**
 - [ ] All 5 `/r/{asset}` pages load < 2s on 4G and show correct asset + zone
