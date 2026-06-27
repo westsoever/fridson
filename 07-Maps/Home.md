@@ -12,6 +12,7 @@
 
 ## Wiki
 - [[06-Wiki/Problem|Problem — Office Lifecycle Management]]
+- [[06-Wiki/Problem-Analysis|Problem Analysis — Pain points, gaps, Z2D readiness]]
 
 ## Resources
 - [[04-Resources/Z2D/hackathon-context|Z2D Hackathon Context]]
