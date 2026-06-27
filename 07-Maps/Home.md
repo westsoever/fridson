@@ -6,7 +6,16 @@
 ---
 
 ## Active Projects
-- [[02-Projects/z2d-credit-analysis/ACTIVE_PLAN|Z2D Credit Analysis]] — Team Fridson · demo Sun 28 Jun 16:00
+- [[02-Projects/z2d-lifecycle/ACTIVE_PLAN|Z2D Lifecycle Platform]] — Team Fridson · demo Sun 28 Jun 16:00
+  - [[02-Projects/z2d-lifecycle/MVP-FLOW|MVP Flow — Scan, Tap, Route]]
+  - [[02-Projects/z2d-lifecycle/LOVABLE-PROMPT|Lovable Prompt + Validation Map]]
+
+## Wiki
+- [[06-Wiki/Problem|Problem — Office Lifecycle Management]]
+
+## Resources
+- [[04-Resources/Z2D/hackathon-context|Z2D Hackathon Context]]
+- [[04-Resources/Z2D/credits-and-resources|Z2D Credits & Resources]]
 
 ## Areas
 *(none yet — add as you define ongoing responsibilities)*
@@ -22,4 +31,6 @@
 *(populate as you meet people — `05-Knowledge/People/`)*
 
 ## Recent Captures
-*Process weekly from [[00-Inbox]]*
+*Inbox clear · 2026-06-27*
+- [[02-Projects/z2d-lifecycle/LOVABLE-PROMPT|Lovable prompt + validation map]] ready to send for first prototype build
+- [[02-Projects/z2d-lifecycle/MVP-FLOW|MVP Flow — Scan, Tap, Route]] drafted for Z2D demo wedge

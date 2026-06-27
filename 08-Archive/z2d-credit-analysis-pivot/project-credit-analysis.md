@@ -1,10 +1,13 @@
 ---
 type: capture
 date: 2026-06-27
-status: inbox
+status: superseded
+superseded_by: 06-Wiki/Problem.md
 ---
 
 # Project: Fintech Credit Analysis App
+
+> **Superseded** — team pivoted to office lifecycle management after [[04-Resources/Z2D/finding-the-problem|Finding the Problem meeting]] (2026-06-27). See [[06-Wiki/Problem]].
 
 Initial direction from kick-off session (2026-06-27 ~11:54 CEST):
 

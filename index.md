@@ -13,7 +13,14 @@
 ## Active Projects
 | File | Status |
 |------|--------|
-| `02-Projects/z2d-credit-analysis/README.md` | Z2D hackathon — fintech credit analysis, demo Sun 16:00 |
+| `02-Projects/z2d-lifecycle/README.md` | Z2D hackathon — office lifecycle / predictive maintenance, demo Sun 16:00 |
+
+## Resources
+| File | Purpose |
+|------|---------|
+| `04-Resources/Z2D/hackathon-context.md` | Z2D event schedule, judging criteria, milestones |
+| `04-Resources/Z2D/credits-and-resources.md` | Lovable, Azure, Cursor, Memtrace credits |
+| `04-Resources/Z2D/finding-the-problem.md` | Team problem-finding meeting notes (2026-06-27) |
 
 ## Areas
 | File | Purpose |
@@ -24,6 +31,11 @@
 | File | Purpose |
 |------|---------|
 | `07-Maps/Home.md` | Vault entry point |
+
+## Wiki (Entities & Concepts)
+| File | Purpose |
+|------|---------|
+| `06-Wiki/Problem.md` | Z2D problem definition — office lifecycle / predictive maintenance |
 
 ## People CRM
 | File | Purpose |

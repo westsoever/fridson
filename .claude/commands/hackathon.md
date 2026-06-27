@@ -21,7 +21,8 @@ Before any major decision, ask:
 
 ## Event Context
 - **Event:** Z2D Cohort #3 — AI Venture Sprint Copenhagen
-- **Project:** Fintech app for credit analysis
+- **Project:** Office lifecycle management — predictive maintenance via sensors + AI dashboard + automated alerts
+- **Problem:** Buildings wear down; servicing is reactive. We predict failures before they happen.
 - **Team:** Fridson (3 members)
 - **Hard deadline:** Demo on Sunday 28 June 2026, 16:00 CEST
 

@@ -2,7 +2,8 @@
 type: capture
 date: 2026-06-27
 source: Z2D Dashboard
-status: inbox
+status: filed
+location: 02-Projects/z2d-lifecycle
 ---
 
 # Team Fridson

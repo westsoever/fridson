@@ -2,6 +2,8 @@
 
 **Meeting recorded:** Saturday, June 27, 2026
 **TLDR:** Office lifecycle management, predictive sensor maintenance, two-day demo development
+**Status:** Processed → [[06-Wiki/Problem]] · [[02-Projects/z2d-lifecycle/ACTIVE_PLAN]]
+**Location:** `04-Resources/Z2D/`
 
 ---
 

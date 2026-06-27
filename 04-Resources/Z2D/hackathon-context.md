@@ -2,7 +2,8 @@
 type: capture
 date: 2026-06-27
 source: Z2D Hackathon · Luma
-status: inbox
+status: filed
+location: 04-Resources/Z2D
 ---
 
 # Z2D: AI Venture Sprint — Hackathon Context

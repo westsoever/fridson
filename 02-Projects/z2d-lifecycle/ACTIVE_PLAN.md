@@ -1,8 +1,10 @@
-# Z2D Credit Analysis — Team Fridson
+# Z2D Lifecycle Platform — Team Fridson
 
-**Goal:** Ship a demoable fintech credit-analysis product that scores strongly on all four Z2D judging criteria by Sunday 28 June 2026, 16:00 CEST.
+**Goal:** Ship a demoable predictive office lifecycle platform — sensor → dashboard → automated alert — that scores on all four Z2D judging criteria by Sunday 28 June 2026, 16:00 CEST.
 **Deadline:** Sun 28 Jun 2026 · 16:00 live demo · 15:00 submission
 **Owner:** Team Fridson (Shuhia, Chris, Lennert)
+
+**Problem definition:** [[06-Wiki/Problem|Office Lifecycle Management]]
 
 ---
 
@@ -26,27 +28,32 @@ Flag the weakest criterion after each review and prioritize it next.
 - [ ] 🧑 Confirm **Milestone 1** (team confirmed) by Sat 14:00
 - [ ] 🧑 Redeem **Lovable credits** — code `COMM-ZD2-MAPJ` → lovable.dev → Settings → Plans & Credits → Pro Plan 1
 - [ ] 🧑 Redeem **Azure credits** ($1,000) — https://luma.link/aMPPeE5k4A
+- [ ] 🧑 Upgrade to **Cursor Pro** for team usage
 - [ ] 🧑 Check **Memtrace** availability on Z2D dashboard
 
 ---
 
-## Phase 1 — Define & Validate (Sat ~09:30–14:00)
-*Kick-off → team confirmed. Nail scope before building.*
+## Phase 1 — Define & Validate
+*Problem locked 2026-06-27. Narrow demo wedge, then build.*
 
-- [ ] 🤖 ▶ NEXT Score current idea against all four judging criteria — identify weakest lens
-- [ ] 🤝 Define "credit analysis" scope: personal scoring / SME lending / BNPL fraud / underwriting / other
-- [ ] 🤝 Identify target user: lender, borrower, or analyst?
-- [ ] 🤝 Articulate the pain point and what's **novel** about our approach (judging criterion #2)
-- [ ] 🤝 Gather at least 2 validation signals — interviews, stats, competitor gaps, or domain data (#3)
-- [ ] 🧑 GATE: Team agrees on one-sentence pitch + problem narrative before Phase 2
+- [x] 🤝 Define problem space — office lifecycle management, operating → predictive [[04-Resources/Z2D/finding-the-problem]]
+- [x] 🤝 Articulate pain point — reactive maintenance, buildings wear down, no forward visibility
+- [x] 🤝 Identify target user — facility managers / office servicing teams
+- [ ] 🤖 ▶ NEXT Pick demo wedge — **[[MVP-FLOW|Scan/Tap/Route]]** (QR → issue → Slack) *or* one sensor + one use case (vibration/pump vs hygiene)
+- [x] 🤖 Draft MVP flow spec — scan QR → tap issue → route to in-house FM / external contractor [[MVP-FLOW]]
+- [x] 🤖 Draft Lovable prompt + validation map — copy-paste build spec + Z2D scorecard [[LOVABLE-PROMPT]]
+- [ ] 🤝 Research existing lifecycle maintenance software — pitch data + competitor gaps (#3)
+- [ ] 🤝 Gather at least 2 validation signals — stats, mentor quote, or market evidence
+- [ ] 🧑 GATE: Team agrees on demo wedge + one-sentence pitch before full build
 
 ## Phase 2 — Build MVP (Sat 13:30 – Sun ~12:00)
-*Core product + demo path. Mentors on-site Sat afternoon.*
+*Sensor → dashboard → alert. Mentors on-site Sat afternoon.*
 
-- [ ] 🤖 Scaffold app in working directory (`~/aiw/fridson` or chosen stack)
-- [ ] 🤖 Implement core credit-analysis flow (the one feature that proves the product)
-- [ ] 🤖 Wire demo data / sample inputs so judges can try it live
-- [ ] 🤝 Prepare **Pitch & Dine** update for Sat 20:00 — progress + problem narrative
+- [ ] 🤖 Build basic **HTML dashboard** to visualize asset alerts
+- [ ] 🤖 Connect high-risk asset to dashboard (sensor data or simulated feed)
+- [ ] 🤖 Implement **automated alert** trigger (e.g. Slack ping to service team)
+- [ ] 🤖 Wire demo data so judges can see threshold breach → alert flow live
+- [ ] 🤝 Prepare **Pitch & Dine** update for Sat 20:00 — problem + live demo path
 - [ ] 🧑 GATE: Day 1 progress demo-ready for Pitch & Dine (Sat 20:00)
 
 ## Phase 3 — Polish & Demo (Sun ~09:00–16:00)
@@ -96,7 +103,7 @@ Flag the weakest criterion after each review and prioritize it next.
 ### Credits & Tools
 | Resource | Status | Details |
 |----------|--------|---------|
-| Cursor | ✅ claimed | referral used |
+| Cursor | ✅ claimed | upgrade to Pro for team |
 | Lovable | ⏳ redeem | code `COMM-ZD2-MAPJ` |
 | Azure | ⏳ redeem | $1,000 — https://luma.link/aMPPeE5k4A |
 | Memtrace | ⏳ check | Z2D dashboard |
@@ -108,13 +115,19 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ---
 
 ## Blockers
-- **Scope undefined** — "credit analysis" still needs a specific wedge (user + pain + novelty)
-- **Validation empty** — no market signals captured yet (weakest judging criterion today)
-- **Dashboard check-ins pending** — Day 1 and Day 2 not completed
+- **Demo wedge open** — Scan/Tap/Route leading; team must confirm vs sensor dashboard before full build
+- **Validation empty** — no market stats or competitor research captured yet
+- **Dashboard check-ins pending** — Day 1 and Milestone 1 (Sat 14:00) not completed
+- **Lovable build pending** — [[LOVABLE-PROMPT]] ready; needs credits redeemed + Slack webhooks configured
 
 ---
 
 ## Status Log
 | Date | Summary |
 |------|---------|
-| 2026-06-27 | Project created from inbox captures — Z2D Cohort #3, fintech credit analysis, Team Fridson |
+| 2026-06-27 | Project created from inbox — initial direction: fintech credit analysis |
+| 2026-06-27 | Problem pivot — team locked office lifecycle / predictive maintenance ([[04-Resources/Z2D/finding-the-problem]]) |
+| 2026-06-27 | Merged to main; problem defined in [[06-Wiki/Problem]]; project renamed to z2d-lifecycle |
+| 2026-06-27 | Wrap-up: inbox processed; blockers captured in README; next: pick sensor + use case, build dashboard |
+| 2026-06-27 | MVP flow designed — [[MVP-FLOW]] (scan QR → tap issue → Slack to FM/contractor); demo wedge decision still open |
+| 2026-06-27 | Lovable prompt + validation map drafted — [[LOVABLE-PROMPT]]; app host locked to Lovable; next: send prompt, configure Slack, team lock wedge |
