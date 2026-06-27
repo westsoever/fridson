@@ -6,6 +6,7 @@
 
 **Source of truth:** [[06-Wiki/decisions/2026-06-27-final-commitment|Final Commitment — canonical definition + 3-min demo arc]]
 **Build roadmap:** [[ROADMAP|What's next to build]] · **Problem:** [[06-Wiki/Problem]] · **Resolution spec:** [[RESOLUTION-AGENT]]
+**👥 Parallel work:** [[team-plans/README|Team Plans — 4 tracks]] · contract: [[team-plans/INTERFACES]] — each member works their own track file; this doc stays the single source of truth for phases & gates.
 
 ---
 
@@ -266,3 +267,4 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-27 | Reframed to AI agent suite + data pool ([[08-Archive/z2d-ideation-superseded/final-discussion-before-work-session]]) |
 | 2026-06-27 | **Source of truth locked** — [[06-Wiki/decisions/2026-06-27-final-commitment]]. Plan rebuilt (make-plan style) around the 3-min demo arc: onboarding+schematic → scan → structured report → pinpoint → route/bid/negotiate/book → approve. Resolution loop promoted from stretch to demo centerpiece. Added [[ROADMAP]] |
 | 2026-06-27 | Inbox processed — final-commitment → 06-Wiki/decisions; stakeholder map → 05-Knowledge; superseded ideation (final-discussion, data-brain ×2, painpoints, initial-feedback) → 08-Archive/z2d-ideation-superseded |
+| 2026-06-27 | Split plan into 4 parallel tracks for the team → [[team-plans/README]] (Capture&Data · Schematic&Projection · Agent Backend · Pitch&Business) + [[team-plans/INTERFACES]] shared contract so tracks build simultaneously without file collisions |
