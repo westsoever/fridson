@@ -1,17 +1,20 @@
-# [Project Name] — Knowledge OS
+# Fridson — Knowledge OS
 
-Personal knowledge base built on PARA + Maps of Content, with AI-first note conventions. Uses Claude Code skills for daily workflow.
+Knowledge vault for **Team Fridson** (Z2D Cohort #3, Copenhagen · 27–28 Jun 2026), built on PARA + Maps of Content with AI-first note conventions. Uses Claude Code skills for daily workflow.
+
+**Product:** Fridson is a suite of AI employees for property management — a tenant scans a broken asset and taps the problem; Fridson writes a structured report, pinpoints it on the building schematic, picks the right contractors, gets bids, negotiates, and books the repair. The property manager only approves.
 
 ---
 
-## Setup
+## Current Project — Fridson (Z2D)
 
-1. Clone this repo and rename the folder to your project name
-2. Fill in `SOUL.md` — who you are, values, constraints
-3. Fill in `CRITICAL_FACTS.md` — name, company, role, tools, goal
-4. Update `CLAUDE.md` title and description
-5. Create your first project under `02-Projects/<project-name>/`
-6. Update `07-Maps/Home.md` as your entry point
+| | |
+|---|---|
+| **Active plan** | [[02-Projects/fridson/ACTIVE_PLAN]] — phases, gates, 3-min demo arc |
+| **Build roadmap** | [[02-Projects/fridson/ROADMAP]] — what to build next + acceptance criteria |
+| **Source of truth** | [[06-Wiki/decisions/2026-06-27-final-commitment]] — canonical product definition |
+| **Live demo** | [fridson.lovable.app](https://fridson.lovable.app) |
+| **Deadline** | Sun 28 Jun 2026 · 15:00 submission · 16:00 live demo |
 
 ---
 
