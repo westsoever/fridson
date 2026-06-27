@@ -1,0 +1,21 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Obsidian workspace state (user-specific, don't share)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Obsidian plugin compiled files (auto-downloaded, no need to track)
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css
+
+# Claude memory (auto-generated, project-specific)
+.claude/memory/
+memory/
+
+# Secrets / credentials
+.env
+*.key
+*.pem
