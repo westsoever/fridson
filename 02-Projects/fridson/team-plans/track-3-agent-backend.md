@@ -4,6 +4,8 @@
 
 > Read [[INTERFACES]] §3 (providers), §4 (events you emit), §5 (approve API). See [[RESOLUTION-AGENT]] for the detailed spec.
 
+> ✅ **SHIPPED 2026-06-27** (committed in `fridson-app` `403ee22`). Self-contained Deno edge function `supabase/functions/agent/**` runs the whole loop — select → RFQ → bids → negotiate → book → PM approve — emitting all §4 events; §5 decision API implemented; 10 Deno tests pass. **Runs on Supabase Edge — Azure NOT needed.** Wired: `submitReport` now invokes it async (202). **Remaining is manual:** `supabase functions deploy agent`; set `SUPABASE_SERVICE_ROLE_KEY` (+ optional `RESEND_API_KEY`/`AGENT_LIVE_EMAIL=1` for real email — else labelled stubs).
+
 ---
 
 ## You own
@@ -21,13 +23,13 @@
 ---
 
 ## Tasks (P3 #4–#7)
-- [ ] ▶ NEXT (start now, mocked) Scaffold the agent service skeleton + build **provider selection** against the [[INTERFACES]] §3 shape using mock rows — swap to the real directory + Azure host when ready
-- [ ] **Select ~3 of 50** providers by `trade` (from issue) + `zone`; emit `providers.selected` with a human-readable `reason`
-- [ ] Send **real RFQ emails** to controlled inboxes; parse replies into comparable bids → emit `rfq.sent` + `bid.received`
-- [ ] **Negotiate** one real email round within FM-set target/ceiling → emit `negotiation.round` (voice call = stretch only)
-- [ ] **Book a repair slot** (calendar hold / confirmation) → emit `slot.booked` "Technician booked for {date}"
-- [ ] **PM approve/disapprove** API (§5) gates the booking — no autonomous spend — + an **audit log** of every step
-- [ ] Prepare **recorded/seed fallbacks** (pre-fetched bids, pre-sent email, pre-booked slot) so it never breaks live
+- [x] Scaffold the agent service + **provider selection** against [[INTERFACES]] §3 (mock dir, auto-swaps to Track 1's live `providers`) ✅
+- [x] **Select ~3 of 50** providers by `trade` + `zone`; emit `providers.selected` with a human-readable `reason` ✅
+- [x] RFQ emails + parse replies into comparable bids → emit `rfq.sent` + `bid.received` ✅ (real with creds; labelled stubs otherwise)
+- [x] **Negotiate** one round within FM-set target/ceiling → emit `negotiation.round` ✅ (voice call = still stretch)
+- [x] **Book a repair slot** → emit `slot.booked` "Technician booked for {date}" ✅
+- [x] **PM approve/disapprove** API (§5) gates the booking — no autonomous spend — + **audit log** ✅
+- [x] Prepare **recorded/seed fallbacks** (5 canonical demo reports, fixture bids, simulated booking) ✅
 
 ## Acceptance
 - [ ] From one report, the feed shows: selected → RFQs sent → bids in → negotiated price → slot booked

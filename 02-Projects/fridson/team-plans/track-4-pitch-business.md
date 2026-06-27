@@ -4,6 +4,8 @@
 
 > Read [[ACTIVE_PLAN]] Phases 5–7 + [[06-Wiki/decisions/2026-06-27-final-commitment]] (the 3-min arc) + [[04-Resources/Z2D/hackathon-strategy]] (validation data).
 
+> ✅ **DRAFTED 2026-06-27** — 4 docs in `pitch/`: [[pitch/business-case]] (3 sourced numbers), [[pitch/ecosystem]] (Min-2 stakeholders + triage-shift line), [[pitch/script]] (locked 3-min script + per-beat fallbacks), [[pitch/logistics]] (props/submission checklist). **Remaining is manual/human:** lock brand spelling, print QR codes, hardware, dry-run, Milestone-2 submission (Sun 15:00).
+
 ---
 
 ## You own
@@ -18,17 +20,17 @@
 
 ## Tasks
 **Minute 2 — Ecosystem (P5)**
-- [ ] Define **secondary stakeholders** with one concrete example each: insurer (proof-of-issue), energy/utility (consumption/repair audit), repair/compliance
-- [ ] Script the **triage-shift** line ("PM orchestrated everything → now they just approve") ≤20s
-- [ ] *(with Track 2)* spec a simple per-ticket context record showing ≥2 stakeholder lenses (framing + mock, not real integrations)
+- [x] Define **secondary stakeholders** with one concrete example each → [[pitch/ecosystem]] ✅
+- [x] Script the **triage-shift** line ≤20s → [[pitch/ecosystem]] ✅
+- [ ] *(with Track 2)* spec a simple per-ticket context record showing ≥2 stakeholder lenses (framing + mock) — *Track 2 stretch, not yet built*
 
 **Minute 3 — Business case (P6)**
-- [ ] Quantify **cost ↓** (X% / €) vs manual triage + sourcing
-- [ ] Quantify **time ↓** (resolution: days → hours)
-- [ ] Frame **quality tradeoff**: "80% quality + cheaper + faster = win" — one slide, 3 numbers + stated assumptions (tie to $2.98B market)
+- [x] Quantify **cost ↓** (15–25% ≈ DKK 140–320k/yr) → [[pitch/business-case]] ✅
+- [x] Quantify **time ↓** (~3–5 days → minutes, ~80% faster) → [[pitch/business-case]] ✅
+- [x] Frame **quality tradeoff** ("80% quality + cheaper + faster = win") + sources → [[pitch/business-case]] ✅
 
 **Pitch polish & submission (P7)**
-- [ ] Lock the **3-minute script** (Min1 live demo+narration · Min2 ecosystem · Min3 business case)
+- [x] Lock the **3-minute script** (Min1 demo · Min2 ecosystem · Min3 business case) → [[pitch/script]] ✅ (draft)
 - [ ] 🧑 Print **5 QR codes**; confirm presenter, phone, projector, same network
 - [ ] Collect **armed fallbacks** from each track (recordings of the live beats)
 - [ ] 🧑 Day 2 check-in + **submission by Sun 15:00**

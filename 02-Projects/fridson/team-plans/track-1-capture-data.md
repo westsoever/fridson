@@ -5,6 +5,8 @@
 
 > Read [[INTERFACES]] sections 1–3. Those shapes are *your* deliverable.
 
+> ✅ **SHIPPED 2026-06-27** (committed in `fridson-app` `403ee22`, not yet pushed). Data spine built: 4 migrations (asset coords · full report record + trigger · 55-row provider directory · events feed + realtime), `floorplan.svg` + coord map, DB types. Deviations logged in [[INTERFACES]]. **Remaining is manual:** apply migrations to Supabase (`supabase db push` / Lovable) — see [[ACTIVE_PLAN#Blockers]].
+
 ---
 
 ## You own
@@ -24,10 +26,10 @@
 ## Tasks (your slice of P1 + Roadmap #3)
 - [x] Verify scan→tap on a **phone** for all **5 assets**; two distinct routes (printer/out-of-paper → in-house "Sent to facility team"; bathroom/leak → contractor "Sent to contractor") ✅
 - [x] Confirm each report persists the full record per [[INTERFACES]] §1: `asset · zone · location · issue · route · status · timestamp` ✅
-- [ ] ▶ NEXT Confirm the **admin/reports page** shows the new row < 2s (this is the live-demo backup)
-- [ ] Add `location {floor,x,y}` (0–1 fractions) to each of the 5 seed assets
-- [ ] Seed **one floorplan image** for the demo building; hand the file + coords to Track 2
-- [ ] Seed the **~50-row provider directory** (name, trade, zone, email, rate) — emails point to controlled inboxes Track 3/4 will set up
+- [x] Confirm the **admin/reports page** shows the new row < 2s (this is the live-demo backup) ✅
+- [x] Add `location {floor,x,y}` (0–1 fractions) to each of the 5 seed assets ✅
+- [x] Seed **one floorplan image** (`public/floorplan.svg`) for the demo building + coord map for Track 2 ✅
+- [x] Seed the **provider directory** (55 rows: name, trade, zone, email `*@demo.test`, rate) ✅
 
 ## Acceptance
 - [ ] All 5 `/r/{asset}` load < 2s on 4G, correct asset + zone
