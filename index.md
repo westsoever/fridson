@@ -13,7 +13,7 @@
 ## Active Projects
 | File | Status |
 |------|--------|
-| `02-Projects/<active-project>/README.md` | *(add your project here)* |
+| `02-Projects/z2d-credit-analysis/README.md` | Z2D hackathon — fintech credit analysis, demo Sun 16:00 |
 
 ## Areas
 | File | Purpose |

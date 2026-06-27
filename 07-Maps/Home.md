@@ -6,7 +6,7 @@
 ---
 
 ## Active Projects
-*(none yet — run `/plan` to create your first project)*
+- [[02-Projects/z2d-credit-analysis/ACTIVE_PLAN|Z2D Credit Analysis]] — Team Fridson · demo Sun 28 Jun 16:00
 
 ## Areas
 *(none yet — add as you define ongoing responsibilities)*
