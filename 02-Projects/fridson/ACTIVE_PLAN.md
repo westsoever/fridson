@@ -97,7 +97,8 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 
 - [x] 🤖 Verify scan→tap works for all **5 assets** on a phone; both routes distinct (printer/out-of-paper → in-house; bathroom/leak → contractor) with success copy "Sent to facility team" vs "Sent to contractor" ✅ confirmed working
 - [x] 🤖 Confirm each report persists a **structured record**: `asset · location/zone · issue · route · timestamp` (the source-of-truth report shape) ✅ persisting with full record
-- [ ] 🤖 ▶ NEXT Confirm **admin/reports page** shows the persisted report (demo backup if anything live fails)
+- [x] 🤖 Operator **issue workspace** at `/` shows persisted reports with decision-first triage UI (shadcn, mission-control strip, approve flow) — shipped `fridson-app` `72af388`; see [[ui-revamp-update-2026-06-27]]
+- [ ] 🤖 ▶ NEXT Verify workspace on **Lovable live** after migration `20260627200000_triage_operations` applies (acknowledge, urgency, duplicate fields)
 
 **Verification checklist:**
 - [ ] All 5 `/r/{asset}` pages load < 2s on 4G and show correct asset + zone
@@ -247,11 +248,11 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ## Blockers
 
 **Deployment gates (turn the demo live):**
-- [x] 🌐 **Push app to Lovable** — ✅ done. `origin/main` = `4e36b43` = my `403ee22` (4-track build) **+ merge of Alex's `ai-agent-flow`** (durable webhook agents: `process-triage`/`process-research` + `report_agent_webhooks` migration). Lovable rebuilds the frontend from this.
-- [ ] 🔑 **Apply 6 migrations** — via **Lovable's Supabase integration** (auto on sync) *or* authenticated CLI: `bunx supabase@latest link --project-ref yyidatcqbvsbntdavmww && bunx supabase@latest db push`. Creates `providers` (55) · `events` · asset coords · full report record · triaging status · agent webhooks. ⚠️ No `SUPABASE_ACCESS_TOKEN`/DB password in this session — couldn't run from here.
+- [x] 🌐 **Push app to Lovable** — ✅ `origin/main` = `72af388` (UI revamp workspace + reporter flow + triage migration file). Lovable rebuilds frontend from this.
+- [ ] 🔑 **Apply 7 migrations** — via Lovable Supabase sync *or* `bunx supabase@latest link --project-ref yyidatcqbvsbntdavmww && bunx supabase@latest db push`. Latest adds triage ops (`urgency`, `acknowledged_at`, `duplicate_of`, `report_audit_events`, etc.). ⚠️ Needs authenticated CLI or Lovable sync.
 - [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). Needs access token.
-- [ ] 🔑 **Set function secrets** (Supabase dashboard) — `SUPABASE_SERVICE_ROLE_KEY` (live events/writes); optional `RESEND_API_KEY` + `AGENT_LIVE_EMAIL=1` for real RFQ email (else labelled stubs); `LOVABLE_API_KEY`/`SLACK_API_KEY` for existing triage
-- [ ] ❓ **Reconcile dual agent trigger** — `submitReport`→`agent` fetch (mine) **and** the `reports` DB webhook → `process-triage`/`process-research` (Alex's) both fire on a report. Pick one canonical path (Alex's durable webhook is more robust) before stage to avoid double runs.
+- [ ] 🔑 **Set function secrets** (Supabase dashboard) — `LOVABLE_API_KEY` (triage + chat + research); optional `RESEND_API_KEY` + `AGENT_LIVE_EMAIL=1` for real RFQ email. Slack removed from app.
+- [ ] ❓ **Reconcile dual agent trigger** — `submitReport`→`invokeResolutionAgent` **and** DB webhook → `process-triage`/`process-research` both fire. Pick one canonical path before stage.
 - [ ] 🖥️ **Stage feed** — open `/projection?feed=real` on the demo laptop; confirm Realtime on `events`
 
 **Resolved this session:** ~~Azure credits~~ (agent runs on Supabase Edge — Azure NOT needed) · ~~Schematic asset~~ (`floorplan.svg` + coords seeded) · ~~vendor inboxes for the loop~~ (stubbed fallback works; only needed for *real* email).
@@ -260,7 +261,7 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 - [ ] ❓ **Brand spelling** — "Fritzson" (source) vs "Fridson" (domain/repo/live app); recommend **Fridson**, pick before slides
 - [ ] 🧑 **3-minute timing** — full-team dry-run on real hardware (projection runs ~54s; needs rehearsal)
 - [ ] 🧑 **QR prints + hardware** — 5 codes, presenter, phone, projector, same network
-- [ ] ❓ **Two agent layers** — existing Lovable triage/research (Slack) + new resolution loop both fire on a report; decide whether to mute triage Slack during the live run
+- [ ] ❓ **Two agent layers** — triage/research webhooks + resolution `agent` both fire on submit; decide which runs on stage (recommend webhook-only for demo)
 - [ ] ❓ **Dangling git remote** — vault repo has extra remote `fridson-app → westsoever/fridson-app`; a stray push could send vault notes to the app repo. Decide: `git remote remove fridson-app`.
 - [ ] 🔑 **Committed `.env` in app repo** — only anon/publishable keys (public-safe); no service-role key present. Low risk, but avoid adding secrets to it.
 
@@ -286,3 +287,4 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-27 | **App repo cloned in-workspace** at `fridson-app/` (separate repo `westsoever/fridson-app`, Lovable-connected) so agents in this vault can edit the app directly. Git-ignored + Obsidian-excluded so the two repos stay separate. Documented in `CLAUDE.md`, `index.md`, README, team-plans. Flagged: dangling `fridson-app` remote on the vault repo + committed `.env` in app repo. |
 | 2026-06-27 | **All 4 tracks built in parallel** (4 subagents) + integrated, committed in `fridson-app` `403ee22` (not pushed): T1 data spine (migrations/coords/floorplan/55 providers/events), T2 `/projection`+`/schematic` w/ mock+real feed, T3 Deno resolution-agent (select→bid→negotiate→book→approve, 10 tests, Azure not needed), T4 `pitch/` docs. Wired `submitReport`→agent; fixed a `tsc` regression (supabase single-row inference under the bigger schema). tsc + vite build green. Remaining = deploy gates (push/migrate/deploy/env) + human logistics. |
 | 2026-06-27 | **App pushed to Lovable** — `403ee22` is now on `origin/main`, then merged with Alex's `ai-agent-flow` (durable webhook agents: `process-triage`/`process-research` + `report_agent_webhooks` migration) → `4e36b43`. Lovable rebuilds the frontend from this. Migrations (now 6) + edge-function deploy still pending: handled by Lovable's Supabase sync or an authenticated CLI — no `SUPABASE_ACCESS_TOKEN`/DB password available this session. Flagged a **dual agent-trigger** to reconcile (my `submitReport`→agent fetch + Alex's report DB webhook). |
+| 2026-06-27 | **UI revamp shipped** — design-system research processed; operator workspace realigned (decision-first triage, shadcn, mission control, reporter multi-step + status page). Pushed `fridson-app` `72af388`. Research filed to `04-Resources/fridson/`. Follow-up: apply migration 7, keyboard inbox, merge UI, photo upload. |
