@@ -15,23 +15,27 @@ status: inbox
 - **Organizers:** Matyáš Adam Michel, Janik Pöttinger, Daniel Elsborg Gal On
 
 ## Schedule
+*All times Europe/Copenhagen. (Updated 2026-06-27 from official schedule.)*
 
 ### Day 1 — Saturday, June 27
 | Time | Event |
 |------|-------|
 | 09:00 | Doors Open & Welcome |
-| 09:30 | Team Formation & Kick-Off |
+| 10:00 | Kickoff Sprint: Ship a POC, score first Points |
+| 12:00 | Building in Breakouts |
 | 13:00 | Lunch |
-| 13:30 | Building (Mentors on-Site) |
-| 20:00 | Pitch & Dine: Show your Day 1 Progress |
+| 13:30 | Building in Breakouts |
+| 18:30 | Pitch & Dine |
 | 22:00 | Day 1 Wrap |
 
 ### Day 2 — Sunday, June 28
 | Time | Event |
 |------|-------|
 | 09:00 | Doors open |
-| 15:00 | Pre-Selection Announcement |
-| 16:00 | Live Demos & Judging |
+| 12:30 | Lunch and Pitching info |
+| 14:00 | Pre-selection Pitches |
+| 15:20 | Finalist Announcement |
+| 16:00 | Final Demos & Judging |
 | 18:00 | Winner Announcement |
 | 18:10 | After-Event |
 | 22:00 | Wrap |
