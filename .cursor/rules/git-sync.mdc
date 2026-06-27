@@ -1,0 +1,13 @@
+---
+description: Sync git before agent work
+alwaysApply: true
+---
+
+Before reading or editing any file in this repo:
+
+1. Run `git fetch --all --prune`
+2. On `main` or `master`: if behind `origin`, run `git pull --ff-only`
+3. On a feature branch: after fetch, if `origin/main` has commits not in this branch, merge with `git merge origin/main` (or ask before rebasing)
+4. If pull or merge fails (conflicts, dirty tree), stop and report — do not commit on top
+
+Run this at the start of every session and again before any commit or push.
