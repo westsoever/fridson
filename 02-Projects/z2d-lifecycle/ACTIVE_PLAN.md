@@ -24,9 +24,9 @@ Before any major decision, score against:
 Flag the weakest criterion after each review and prioritize it next.
 
 ## Human-Action Queue
-- [ ] 🧑 Complete **Day 1 check-in** on [Z2D Dashboard](https://z2d-base.lovable.app/dashboard)
-- [ ] 🧑 Confirm **Milestone 1** (team confirmed) by Sat 14:00
-- [ ] 🧑 Redeem **Lovable credits** — code `COMM-ZD2-MAPJ` → lovable.dev → Settings → Plans & Credits → Pro Plan 1
+- [x] 🧑 Complete **Day 1 check-in** on [Z2D Dashboard](https://z2d-base.lovable.app/dashboard) ✅ done
+- [x] 🧑 Confirm **Milestone 1** (team confirmed) ✅ done
+- [x] 🧑 Redeem **Lovable credits** — code `COMM-ZD2-MAPJ` ✅ done
 - [ ] 🧑 Redeem **Azure credits** ($1,000) — https://luma.link/aMPPeE5k4A
 - [ ] 🧑 Upgrade to **Cursor Pro** for team usage
 - [ ] 🧑 Check **Memtrace** availability on Z2D dashboard
@@ -39,22 +39,31 @@ Flag the weakest criterion after each review and prioritize it next.
 - [x] 🤝 Define problem space — office lifecycle management, operating → predictive [[04-Resources/Z2D/finding-the-problem]]
 - [x] 🤝 Articulate pain point — reactive maintenance, buildings wear down, no forward visibility
 - [x] 🤝 Identify target user — facility managers / office servicing teams
-- [ ] 🤖 ▶ NEXT Pick demo wedge — **[[MVP-FLOW|Scan/Tap/Route]]** (QR → issue → Slack) *or* one sensor + one use case (vibration/pump vs hygiene)
+- [x] 🤖 Pick demo wedge — **Scan/Tap/Route** (QR → issue → Slack) ✅ confirmed
 - [x] 🤖 Draft MVP flow spec — scan QR → tap issue → route to in-house FM / external contractor [[MVP-FLOW]]
 - [x] 🤖 Draft Lovable prompt + validation map — copy-paste build spec + Z2D scorecard [[LOVABLE-PROMPT]]
-- [ ] 🤝 Research existing lifecycle maintenance software — pitch data + competitor gaps (#3)
-- [ ] 🤝 Gather at least 2 validation signals — stats, mentor quote, or market evidence
-- [ ] 🧑 GATE: Team agrees on demo wedge + one-sentence pitch before full build
+- [x] 🤝 Research existing lifecycle maintenance software — competitor gaps → [[04-Resources/Z2D/competitor-validation]] ✅
+- [x] 🤝 Gather at least 2 validation signals — $2.98B market, Reddit practitioner quotes, Snapfix comp → [[04-Resources/Z2D/hackathon-strategy]] ✅
+- [x] 🧑 GATE: Team agrees on demo wedge + one-sentence pitch before full build ✅ — demo live at [fridson.lovable.app](https://fridson.lovable.app)
 
 ## Phase 2 — Build MVP (Sat 13:30 – Sun ~12:00)
-*Sensor → dashboard → alert. Mentors on-site Sat afternoon.*
+*QR → tap → Slack works. Now harden the demo and add the second routing path.*
 
-- [ ] 🤖 Build basic **HTML dashboard** to visualize asset alerts
-- [ ] 🤖 Connect high-risk asset to dashboard (sensor data or simulated feed)
-- [ ] 🤖 Implement **automated alert** trigger (e.g. Slack ping to service team)
-- [ ] 🤖 Wire demo data so judges can see threshold breach → alert flow live
-- [ ] 🤝 Prepare **Pitch & Dine** update for Sat 20:00 — problem + live demo path
+- [ ] 🤖 ▶ NEXT Verify **two routing paths** visible on demo — printer/out-of-paper → in-house; bathroom/leak → contractor (different Slack channels)
+- [ ] 🤖 Confirm **admin/backup page** exists — shows submitted reports if Slack is slow
+- [ ] 🤖 Print/generate **5 QR codes** for demo props: printer, bathroom, meeting room, pump room, kitchen
+- [ ] 🤝 Prepare **Pitch & Dine** update for Sat 20:00 — hook + live demo + validation bullets [[04-Resources/Z2D/competitor-validation]]
 - [ ] 🧑 GATE: Day 1 progress demo-ready for Pitch & Dine (Sat 20:00)
+
+## Phase 2.5 — Resolution Agent (STRETCH — only after Phase 2 must-have is solid)
+*The differentiator: report → resolved. See [[RESOLUTION-AGENT]]. Gated behind a working Capture→Route demo.*
+
+- [ ] 🧑 GATE: Capture→Route demo bulletproof before starting any agent work
+- [ ] 🤖 Build **Sourcing Brief** (research only) — broken asset → 3 ranked replacement options + prices
+- [ ] 🤖 Add **RFQ email** outreach — draft + send to demo vendor inbox, parse replies
+- [ ] 🤖 Stretch: **AI negotiation call** to a sandbox/teammate number — the headline demo beat
+- [ ] 🤖 Wire human-in-the-loop approval gate (no autonomous purchase) + audit log
+- [ ] 🤝 Prepare recorded fallbacks (call clip, pre-fetched brief) so it never breaks the must-have
 
 ## Phase 3 — Polish & Demo (Sun ~09:00–16:00)
 *Submission → live demo → judging.*
@@ -115,10 +124,9 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ---
 
 ## Blockers
-- **Demo wedge open** — Scan/Tap/Route leading; team must confirm vs sensor dashboard before full build
-- **Validation empty** — no market stats or competitor research captured yet
-- **Dashboard check-ins pending** — Day 1 and Milestone 1 (Sat 14:00) not completed
-- **Lovable build pending** — [[LOVABLE-PROMPT]] ready; needs credits redeemed + Slack webhooks configured
+- **Azure credits** — $1,000 unclaimed (https://luma.link/aMPPeE5k4A)
+- **Two-scenario demo** — need to confirm printer→in-house and bathroom→contractor routes are visually distinct
+- **Pitch & Dine at 20:00** — ~4 hours to polish demo + prepare 2-min update
 
 ---
 
@@ -131,3 +139,7 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-27 | Wrap-up: inbox processed; blockers captured in README; next: pick sensor + use case, build dashboard |
 | 2026-06-27 | MVP flow designed — [[MVP-FLOW]] (scan QR → tap issue → Slack to FM/contractor); demo wedge decision still open |
 | 2026-06-27 | Lovable prompt + validation map drafted — [[LOVABLE-PROMPT]]; app host locked to Lovable; next: send prompt, configure Slack, team lock wedge |
+| 2026-06-27 | Product expanded — [[RESOLUTION-AGENT]] added as "Resolve" layer (research → source → negotiate replacements). Positioned as headline stretch, gated behind Capture→Route must-have |
+| 2026-06-27 | Milestone 1 confirmed, Day 1 check-in done, Lovable credits redeemed — demo live at fridson.lovable.app |
+| 2026-06-27 | Phase 1 complete — validation research + competitor landscape done; QR→Slack flow confirmed working |
+| 2026-06-27 | Data Brain session — hero positioning shift to "24/7 AI Property Manager"; Pitch & Dine strategy: show full scope, use feedback to cut [[04-Resources/Z2D/data-brain]] |
