@@ -21,10 +21,10 @@
 ---
 
 ## Tasks (P2 #2 + P4 #8)
-- [ ] Render the floorplan; place a **marker** using `location.x/y` × rendered size (per [[INTERFACES]] §2)
+- [ ] ▶ NEXT (unblocked now) Build the **projection view** + a **mock event emitter** against [[INTERFACES]] §4 — step cards for the full sequence, no need to wait on Track 1/3
+- [ ] Render the floorplan; place a **marker** using `location.x/y` × rendered size (per [[INTERFACES]] §2) — *needs floorplan image + coords from Track 1*
 - [ ] On `report.created` / `location.pinpointed`, **pulse the marker** at the asset spot within ~2s
-- [ ] Build the **projection view**: schematic + an ordered **activity feed** of step cards (one card per event in [[INTERFACES]] §4)
-- [ ] Wire the feed to the event channel (websocket/poll the `events` table); **scripted timeline as fallback**
+- [ ] Wire the feed to the **real** event channel (websocket/poll the `events` table) once Track 3 emits; **scripted timeline as fallback**
 - [ ] Tune pacing so the whole sequence is visible + readable in **≤60s**, legible from stage (large type, clear step states)
 - [ ] *(stretch, only if time)* light per-ticket "context record" view for Minute 2 — content/script comes from Track 4
 

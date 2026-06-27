@@ -45,6 +45,6 @@
 ---
 
 ## Open team decisions you should drive
-- [ ] 🧑 Confirm **brand spelling**: "Fritzson" (source doc) vs "Fridson" (repo/domain) — pick one before slides
-- [ ] 🧑 Redeem **Azure credits** ($1,000) with Track 3 — https://luma.link/aMPPeE5k4A
+- [ ] 🧑 ▶ NEXT Confirm **brand spelling**: "Fritzson" (source doc) vs "Fridson" (repo/domain) — pick one before slides (blocks deck)
+- [ ] 🧑 ▶ NEXT Redeem **Azure credits** ($1,000) — https://luma.link/aMPPeE5k4A — **unblocks Alex (Track 3)**
 - [ ] 🧑 Update team roster — full team is **Slavi, Lennert, Chris, Alex** (team.md still lists 3)

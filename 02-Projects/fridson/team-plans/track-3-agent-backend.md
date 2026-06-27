@@ -21,6 +21,7 @@
 ---
 
 ## Tasks (P3 #4–#7)
+- [ ] ▶ NEXT (start now, mocked) Scaffold the agent service skeleton + build **provider selection** against the [[INTERFACES]] §3 shape using mock rows — swap to the real directory + Azure host when ready
 - [ ] **Select ~3 of 50** providers by `trade` (from issue) + `zone`; emit `providers.selected` with a human-readable `reason`
 - [ ] Send **real RFQ emails** to controlled inboxes; parse replies into comparable bids → emit `rfq.sent` + `bid.received`
 - [ ] **Negotiate** one real email round within FM-set target/ceiling → emit `negotiation.round` (voice call = stretch only)
