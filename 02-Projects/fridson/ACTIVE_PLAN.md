@@ -161,8 +161,8 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 *Reporting creates context; context is consumed by other stakeholders. The triage shift.*
 
 - [x] 🤝 Define **secondary stakeholder use cases** with one concrete example each: insurers (proof-of-issue), energy/utilities (consumption/repair audit), repair/compliance ✅ [[pitch/ecosystem]]
-- [x] 🤖 A simple **context record** view per ticket (the same event → value for multiple stakeholders) ✅ stakeholder lens tabs in `WorkRecordPane` (Phase 5; local, not yet pushed separately)
-- [ ] 🤝 Script the **triage-shift narrative**: "before Fridson the PM orchestrated everything; now they approve/disapprove"
+- [x] 🤖 A simple **context record** view per ticket (the same event → value for multiple stakeholders) ✅ `StakeholderContextPanel` + Context tab in workspace — pushed `c77bc42`
+- [x] 🤝 Script the **triage-shift narrative**: "before Fridson the PM orchestrated everything; now they approve/disapprove" ✅ verbatim line in [[pitch/ecosystem]] + [[pitch/script]]
 
 **Verification checklist:**
 - [ ] One ticket page shows ≥2 stakeholder lenses on the same event
@@ -173,10 +173,10 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ## Phase 6 — Business Case (demo Minute 3)
 *Quantify the win.*
 
-- [ ] 🤝 Quantify **cost reduction** (X% / €) vs manual triage + sourcing
-- [ ] 🤝 Quantify **time improvement** (resolution cycle: days → hours)
-- [ ] 🤝 State the **quality tradeoff** framing with numbers: "80% quality + cheaper + faster = win"
-- [ ] 🤝 One slide/visual with the 3 numbers + source assumptions [[04-Resources/Z2D/hackathon-strategy]]
+- [x] 🤝 Quantify **cost reduction** (X% / €) vs manual triage + sourcing ✅ [[pitch/business-case]] (15–25%, DKK 140–320k/yr)
+- [x] 🤝 Quantify **time improvement** (resolution cycle: days → hours) ✅ [[pitch/business-case]] (~3–5 days → same-day)
+- [x] 🤝 State the **quality tradeoff** framing with numbers: "80% quality + cheaper + faster = win" ✅ [[pitch/business-case]]
+- [ ] 🤝 One slide/visual with the 3 numbers + source assumptions [[04-Resources/Z2D/hackathon-strategy]] — *copy from business-case into deck*
 
 **Verification checklist:**
 - [ ] Three defensible numbers with stated assumptions
@@ -189,7 +189,7 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 
 - [ ] 🧑 Complete **Day 2 check-in** on Z2D dashboard
 - [ ] 🤖 Harden the live demo path — no dead ends, fast load, fallbacks armed
-- [ ] 🤝 Lock the **3-minute script** (Min1 live demo+narration · Min2 ecosystem · Min3 business case)
+- [x] 🤝 Lock the **3-minute script** (Min1 live demo+narration · Min2 ecosystem · Min3 business case) ✅ [[pitch/script]] — re-time at dry-run
 - [ ] 🧑 Print **5 QR codes** for demo props + confirm phone/projector hardware
 - [ ] 🤝 Final submission prep — **Milestone 2 by Sun 15:00**
 - [ ] 🧑 GATE: Full **dry-run** of the 3-min pitch with the team before Sun 16:00
@@ -253,11 +253,11 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ## Blockers
 
 **Deployment gates (turn the demo live):**
-- [x] 🌐 **Push app to Lovable** — ✅ `origin/main` = `6b50e0c` (schematic floor selector + report markers merged with Lovable sync). Frontend rebuilds from this.
-- [ ] 🔑 **Apply 7 migrations** — via Lovable Supabase sync *or* `bunx supabase@latest link --project-ref yyidatcqbvsbntdavmww && bunx supabase@latest db push`. Latest adds triage ops (`urgency`, `acknowledged_at`, `duplicate_of`, `report_audit_events`, etc.). ⚠️ Needs authenticated CLI or Lovable sync — **BLOCKED this session** (no `SUPABASE_ACCESS_TOKEN`).
-- [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). Needs access token — **BLOCKED this session**.
+- [x] 🌐 **Push app to Lovable** — ✅ `origin/main` = `c77bc42` (schematic merge `6b50e0c` + stakeholder Context UI + hybrid agent path). Frontend rebuilds from this.
+- [ ] 🔑 **Apply 7 migrations** — via Lovable Supabase sync *or* commands in [[plans/DEPLOY-BLOCKER-REPORT]]. Latest adds triage ops (`urgency`, `acknowledged_at`, `duplicate_of`, `report_audit_events`, etc.). ⚠️ **BLOCKED** — CLI 403 without project-scoped `SUPABASE_ACCESS_TOKEN`.
+- [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). ⚠️ **BLOCKED** — same token issue; see [[plans/DEPLOY-BLOCKER-REPORT]].
 - [ ] 🔑 **Set function secrets** (Supabase dashboard) — `LOVABLE_API_KEY` (triage + chat + research); **`RESEND_API_KEY` + `AGENT_LIVE_EMAIL=1`** for mock-provider RFQ email on Approve (route to team-controlled inbox, not `*@demo.test` vendor addresses). Slack removed from app.
-- [x] ❓ **Reconcile dual agent trigger** — ✅ **Option A hybrid** documented in `reports.functions.ts`: webhooks for triage/research + resolution agent for projection events on Approve. *(Local edit — not yet committed separately.)*
+- [x] ❓ **Reconcile dual agent trigger** — ✅ **Option A hybrid** documented in `reports.functions.ts`: webhooks for triage/research + resolution agent for projection events on Approve — pushed `c77bc42`
 - [ ] 🖥️ **Stage feed** — open `/projection?feed=real` on the demo laptop; confirm Realtime on `events`
 
 **Resolved this session:** ~~Azure credits~~ (agent runs on Supabase Edge — Azure NOT needed) · ~~Schematic asset~~ (`floorplan.svg` + coords seeded) · ~~Push to Lovable~~ (`6b50e0c` on `origin/main`) · ~~Dual agent trigger~~ (Option A hybrid documented locally) · ~~vendor inboxes for the loop~~ (stubbed fallback works; only needed for *real* email).
@@ -265,7 +265,10 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 **Still open (human decisions / logistics — see [[pitch/logistics]]):**
 - [x] ~~**Brand spelling**~~ — **LOCKED: Fridson** ✅ *(2026-06-28, Phase 4)*
 - [ ] 🧑 **3-minute timing** — full-team dry-run on real hardware (projection runs ~54s; needs rehearsal)
-- [ ] 🧑 **QR prints + hardware** — 5 codes, presenter, phone, projector, same network
+- [ ] 🧑 **QR prints + hardware** — 5 codes ([[pitch/qr-codes]]), presenter, phone, projector, same network
+- [ ] 🧑 **Milestone 2 submission (15:00)** — paste from [[pitch/milestone-2-copy]]
+- [ ] 🧑 **Full dry-run (before 16:00)** — [[pitch/dry-run-checklist]]
+- [ ] 🌐 **Push vault to origin** — knowledgespace `main` ahead 2 commits (`5ac85ad` plans + logistics docs)
 - [ ] ❓ **Dangling git remote** — vault repo has extra remote `fridson-app → westsoever/fridson-app`; a stray push could send vault notes to the app repo. Decide: `git remote remove fridson-app`.
 - [ ] 🔑 **Committed `.env` in app repo** — only anon/publishable keys (public-safe); no service-role key present. Low risk, but avoid adding secrets to it.
 

@@ -39,9 +39,7 @@
 
 ## Recent Captures
 *Inbox clear · 2026-06-28 (wrap-up)*
-- [[02-Projects/fridson/system-graph-side-mission-2026-06-27|System Map]] — live data-flow graph at `/graph`; linear ticket topology + Fridson AI (`fd3caeb`, pushed)
-- [[02-Projects/fridson/dashboard-side-mission-2026-06-27|Dashboard]] — read-only KPI/analytics at `/dashboard` (side mission complete)
-- [[02-Projects/fridson/plans/system-map-linear-flow|System Map linear flow plan]] — topology spec for per-ticket path highlighting
-- `/schematic` — per-floor selector + open-report markers (`e4234ec`, **local — push pending**)
-- [[02-Projects/fridson/ui-revamp-update-2026-06-27|UI revamp]] at `72af388`; [[02-Projects/fridson/team-plans/README|Team Plans]] — 4 tracks built; deploy gates remain
-- Demo live at [fridson.lovable.app](https://fridson.lovable.app)
+- [[02-Projects/fridson/plans/README|Execution plans 00–07]] executed — hybrid agent path, stakeholder Context tab, pitch logistics docs
+- [[02-Projects/fridson/plans/DEPLOY-BLOCKER-REPORT|Deploy blocker report]] — Supabase migrate/deploy blocked on CLI token
+- App pushed `c77bc42` — schematic + Context UI + Option A agent path · [fridson.lovable.app](https://fridson.lovable.app)
+- Brand locked **Fridson** · [[02-Projects/fridson/pitch/dry-run-checklist|Dry-run checklist]] · [[02-Projects/fridson/pitch/qr-codes|QR codes]]
