@@ -54,3 +54,10 @@ bun run build
 ## Plan
 
 - [[plans/08-ui-revamp-dribbble-support-dashboard]]
+- [[plans/09-operator-onboarding-tour]] — ✅ shipped `c326429`
+
+## Also shipped after UI revamp
+
+- Approve → resolution agent → mock RFQ inbox (`b0185f3`)
+- Activity sidebar reorder + vertical timeline on `/projection` (`be24035`)
+- Donut chart tooltip fix (`5338c86`)

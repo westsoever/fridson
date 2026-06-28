@@ -6,7 +6,7 @@
 
 **Source of truth:** [[06-Wiki/decisions/2026-06-27-final-commitment|Final Commitment — canonical definition + 3-min demo arc]]
 **Build roadmap:** [[ROADMAP|What's next to build]] · **Problem:** [[06-Wiki/Problem]] · **Resolution spec:** [[RESOLUTION-AGENT]] · **Email:** [[email-integration]]
-**👥 Parallel work:** [[team-plans/README|Team Plans — 4 tracks]] · contract: [[team-plans/INTERFACES]] · **execution plans:** [[plans/README|plans/00–07]] — each member works their own track file; this doc stays the single source of truth for phases & gates.
+**👥 Parallel work:** [[team-plans/README|Team Plans — 4 tracks]] · contract: [[team-plans/INTERFACES]] · **execution plans:** [[plans/README|plans/00–09]] — each member works their own track file; this doc stays the single source of truth for phases & gates.
 
 ---
 
@@ -78,9 +78,10 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 **Where the code is:** the app is cloned in-workspace at `fridson-app/` (repo `github.com/westsoever/fridson-app`, Lovable-connected, separate git history). Agents can edit it directly; commits there go to the app repo, not this vault. Stack: Vite + React + TS + Bun + Supabase (`fridson-app/AGENTS.md`). See root `CLAUDE.md → The app code lives here too`.
 
 **Current build state (verify, don't assume):**
-- Live app: [fridson.lovable.app](https://fridson.lovable.app) — home lists 5 assets; `/r/printer-3f` loads scan→tap.
-- Built so far: Capture (scan→tap) + basic routing + admin/reports page (Supabase via Lovable).
-- Not built yet: schematic onboarding, location pinpoint, contractor directory, bidding/negotiation, booking, the projected activity feed, business-case numbers.
+- Live app: [fridson.lovable.app](https://fridson.lovable.app) — `/dashboard` is home; `/r/meeting-4f` is demo hero scan→tap.
+- Built so far: Capture (scan→tap) · operator workspace (triage + approve) · dashboard KPIs · `/schematic` floorplan + markers · `/projection` mock+real feed · `/graph` system map · resolution agent (local + edge) · 55-provider directory · stakeholder context panel · **operator onboarding tour** · cobalt UI revamp (Manrope/Sora).
+- Not live yet (deploy gates): edge functions + migrations on Supabase; approve→RFQ email E2E; real-time projection feed (`?feed=real`).
+- Pitch docs done: ecosystem script, business case, Milestone 2 submitted.
 
 **Allowed scope for the demo (anything outside = roadmap):** the six steps in the canonical flow, rendered so they are visible in Minute 1. Secondary stakeholders (Minute 2) and business case (Minute 3) are narrative + light UI, not full systems.
 
@@ -97,7 +98,8 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 
 - [x] 🤖 Verify scan→tap works for all **5 assets** on a phone; both routes distinct (printer/out-of-paper → in-house; bathroom/leak → contractor) with success copy "Sent to facility team" vs "Sent to contractor" ✅ confirmed working
 - [x] 🤖 Confirm each report persists a **structured record**: `asset · location/zone · issue · route · timestamp` (the source-of-truth report shape) ✅ persisting with full record
-- [x] 🤖 Operator **issue workspace** at `/` shows persisted reports with decision-first triage UI (shadcn, mission-control strip, approve flow) — shipped `fridson-app` `72af388`; see [[ui-revamp-update-2026-06-27]]
+- [x] 🤖 Operator **issue workspace** at `/workspace` shows persisted reports with decision-first triage UI (shadcn, mission-control strip, approve flow) — shipped `72af388` → UI revamp complete `be24035`; see [[ui-revamp-update-2026-06-28]]
+- [x] 🤖 **Operator onboarding tour** — first-launch walkthrough (Back/Next/Skip, localStorage persistence, sidebar highlights) across Dashboard → Workspace → QR → Graph → Schematic → Activity ✅ `c326429` on `origin/main`; plan [[plans/09-operator-onboarding-tour]]
 - [ ] 🤖 Verify workspace on **Lovable live** after migration `20260627200000_triage_operations` applies (acknowledge, urgency, duplicate fields)
 
 **Verification checklist:**
@@ -149,6 +151,7 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 *The projected screen behind the presenter that ties Phases 2–3 into one live narrative.*
 
 - [x] 🤖 Build a **projection view**: building schematic + a live **agent activity feed** (location pinpoint → report → providers queried → emails → bids → negotiation → booked) ✅ `/projection` shipped `403ee22`; mock ~54s timeline works offline
+- [x] 🤖 **Activity feed UX** — sidebar Activity promoted to top nav group; events render as vertical timeline (replaces horizontal step rail) ✅ `be24035`
 - [ ] 🤖 Wire the feed to real events from Phases 2–3 (websocket/poll); scripted timeline as fallback — *built (`?feed=real`); blocked on migrations + edge deploy (Phase 1 gates)*
 - [ ] 🤝 Tune pacing so the whole flow is **visible and explained within ~1 minute**
 - [ ] 🤝 Make it legible from stage (large type, clear step states)
@@ -246,7 +249,7 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 
 ## Team & Resources
 
-**Execution plans:** [[plans/README|plans/00–07]] — parallel agent pickup for deploy gates, live verify, pitch logistics, doc reconciliation.
+**Execution plans:** [[plans/README|plans/00–09]] — parallel agent pickup for deploy gates, live verify, pitch logistics, doc reconciliation, operator onboarding (shipped).
 
 ### Team Fridson (3/5)
 | Member | Email | Role |
@@ -272,7 +275,7 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ## Blockers
 
 **Deployment gates (turn the demo live):**
-- [x] 🌐 **Push app to Lovable** — ✅ `b0185f3` on `origin/main` (approve→agent→email + UI polish); Lovable rebuild in progress
+- [x] 🌐 **Push app to Lovable** — ✅ `be24035` on `origin/main` (approve→agent→mock inbox · UI revamp · onboarding tour · activity timeline); Lovable rebuild should follow each push
 - [ ] 🔑 **Apply 7 migrations** — via Lovable Supabase sync *or* commands in [[plans/DEPLOY-BLOCKER-REPORT]]. Latest adds triage ops (`urgency`, `acknowledged_at`, `duplicate_of`, `report_audit_events`, etc.). ⚠️ **BLOCKED** — CLI 403 without project-scoped `SUPABASE_ACCESS_TOKEN`.
 - [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). ⚠️ **BLOCKED** — same token issue; see [[plans/DEPLOY-BLOCKER-REPORT]].
 - [ ] 🔑 **Set function secrets** (Supabase dashboard) — `LOVABLE_API_KEY` (triage + chat + research); **`RESEND_API_KEY` + `AGENT_MOCK_INBOX=<team inbox>`** for approve-triggered RFQ redirect (all provider emails → one inbox); optional `AGENT_LIVE_EMAIL=1` for direct vendor send. Slack removed from app.
@@ -326,3 +329,4 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-28 | **Logistics:** Day 2 check-in done; MVP QR codes printed (hero `meeting-4f` — full 5-asset set not required). Remaining: deploy gates, Milestone 2 (15:00), dry-run (16:00). |
 | 2026-06-28 | **Milestone 2 submitted** on Z2D dashboard (15:00). Remaining before judging: deploy gates (optional for fallback demo), full dry-run, live demo 16:00. |
 | 2026-06-28 | **Phase 8 added** — real office inventory, The Shack floorplan mapping, office-manager cold calls, agent research + quote email E2E verify. |
+| 2026-06-28 (overnight) | **App polish pushed (`be24035`):** approve→agent→mock RFQ inbox (`b0185f3`); dashboard chart/token polish + donut tooltip fix; operator onboarding tour (`c326429`, [[plans/09-operator-onboarding-tour]]); Activity sidebar reorder + vertical timeline. Vault: [[plans/LIVE-VERIFY-RUNBOOK]], plans 00–07 executed, Milestone 2 ✅, logistics cleared. ▶ NEXT unchanged: Supabase sync + secrets + live E2E before dry-run. |

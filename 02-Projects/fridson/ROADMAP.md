@@ -124,7 +124,7 @@ Makes "selects 3 of 50" real.
 
 ## Related
 - [[ACTIVE_PLAN|Active Plan (phases + gates)]]
-- [[plans/README|Execution plans (00–07)]]
+- [[plans/README|Execution plans (00–09)]]
 - [[RESOLUTION-AGENT|Resolution Agent spec (detailed)]]
 - [[MVP-FLOW|MVP Flow spec]] · [[LOVABLE-PROMPT|Lovable build prompt]]
 - [[06-Wiki/decisions/2026-06-27-final-commitment|Final Commitment (source of truth)]]

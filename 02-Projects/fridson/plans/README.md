@@ -23,6 +23,7 @@
 | **5** | [[05-minute-2-context-ui\|05-minute-2-context-ui.md]] | Stakeholder lens UI (optional) | 2–3 hr |
 | **6** | [[06-doc-reconciliation\|06-doc-reconciliation.md]] | Vault docs ↔ code reality | 30 min |
 | **7** | [[07-final-verification\|07-final-verification.md]] | Full dry-run + timing | 1 hr |
+| **9** | [[09-operator-onboarding-tour\|09-operator-onboarding-tour.md]] | Operator first-launch tour | ✅ shipped `c326429` |
 
 ---
 
@@ -72,13 +73,13 @@ Human logistics (P4) runs on the side but **blocks P7** if QR codes, brand, or h
 
 ---
 
-## Verified blockers (2026-06-28)
+## Verified blockers (2026-06-28 overnight)
 
-- App git **diverged**: local +3 (schematic), origin +3 (Lovable sync) — merge before push
-- **22 migrations** in repo; live Supabase may be behind — `db push` required
-- **Dual agent trigger**: `submitReport` → `invokeResolutionAgent` **and** DB webhook → `process-triage`
-- `/projection?feed=real` depends on `events` table + Realtime (migration + agent path)
-- Schematic commits (`e4234ec`) not on Lovable until push completes
+- App **synced** — `be24035` on `origin/main` (approve→agent, UI revamp, onboarding tour, activity timeline)
+- **7 migrations** in repo; live Supabase likely behind — Lovable sync or `db push` required
+- **Agent path reconciled** — submit → triage webhook only; **Approve → resolution agent** + process-research
+- `/projection?feed=real` depends on `events` table + Realtime + edge deploy
+- Supabase CLI **403** without project-scoped `SUPABASE_ACCESS_TOKEN` — use Lovable Supabase sync or dashboard
 
 ---
 
