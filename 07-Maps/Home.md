@@ -8,6 +8,7 @@
 ## Active Projects
 - [[02-Projects/fridson/ACTIVE_PLAN|Fridson — AI Employees for Property Management]] — Team Fridson · demo Sun 28 Jun 16:00
   - [[02-Projects/fridson/team-plans/README|Team Plans — 4 parallel tracks]] (Chris=data · Slavi=frontend · Alex=agent · Lennert=pitch)
+  - [[02-Projects/fridson/plans/README|Execution plans (00–07)]] — parallel agent pickup for demo gates
   - [[02-Projects/fridson/ROADMAP|Build Roadmap]] · [[02-Projects/fridson/RESOLUTION-AGENT|Resolution Agent spec]]
   - [[02-Projects/fridson/MVP-FLOW|MVP Flow — Scan, Tap, Route]] · [[02-Projects/fridson/LOVABLE-PROMPT|Lovable Prompt + Validation Map]]
   - [[02-Projects/fridson/ui-revamp-update-2026-06-27|UI revamp update]] · [[04-Resources/fridson/design-system|Design system]]
@@ -37,8 +38,9 @@
 *(populate as you meet people — `05-Knowledge/People/`)*
 
 ## Recent Captures
-*Inbox clear · 2026-06-27 (wrap-up)*
-- [[04-Resources/fridson/design-system|Design system]] + HMI/ticketing research → `04-Resources/fridson/`
-- [[02-Projects/fridson/ui-revamp-update-2026-06-27|UI revamp]] shipped in `fridson-app` `72af388` — decision-first workspace, reporter flow, triage migration
-- [[02-Projects/fridson/team-plans/README|Team Plans]] — 4 tracks shipped; deploy gates remain (migrations + edge functions)
-- Demo live at [fridson.lovable.app](https://fridson.lovable.app)
+*Inbox clear · 2026-06-28 (wrap-up)*
+- **Approve→agent→email wired** — pushed `b0185f3` to Lovable; Supabase deploy still human-gated ([[02-Projects/fridson/plans/LIVE-VERIFY-RUNBOOK|Live Verify Runbook]])
+- [[02-Projects/fridson/plans/README|Execution plans 00–07]] — hybrid agent path, stakeholder Context tab, pitch logistics docs
+- [[02-Projects/fridson/plans/DEPLOY-BLOCKER-REPORT|Deploy blocker report]] — Supabase migrate/deploy blocked on CLI token
+- App on Lovable `c77bc42` · [fridson.lovable.app](https://fridson.lovable.app) · brand locked **Fridson**
+- [[02-Projects/fridson/pitch/dry-run-checklist|Dry-run checklist]] · [[02-Projects/fridson/pitch/qr-codes|QR codes]]

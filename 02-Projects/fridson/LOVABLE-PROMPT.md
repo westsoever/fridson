@@ -103,7 +103,7 @@ Seed assets on first deploy. Reports append-only.
 - High contrast, large typography for issue buttons
 - Works on iPhone Safari and Android Chrome without install
 - Dark text on light background (readable in office lighting)
-- Primary action color: teal or blue (trust/safety feel)
+- Primary action color: **cobalt `#2D5BFF`** (canonical — see `fridson-app/src/styles.css`)
 - No hamburger menus, no complex navigation — reporter sees one page only
 
 ## Technical constraints

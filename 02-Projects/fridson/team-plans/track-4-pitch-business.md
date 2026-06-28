@@ -22,7 +22,7 @@
 **Minute 2 — Ecosystem (P5)**
 - [x] Define **secondary stakeholders** with one concrete example each → [[pitch/ecosystem]] ✅
 - [x] Script the **triage-shift** line ≤20s → [[pitch/ecosystem]] ✅
-- [ ] *(with Track 2)* spec a simple per-ticket context record showing ≥2 stakeholder lenses (framing + mock) — *Track 2 stretch, not yet built*
+- [ ] *(with Track 2)* spec a simple per-ticket context record showing ≥2 stakeholder lenses (framing + mock) — ✅ stakeholder lens tabs in `WorkRecordPane` (Phase 5; verify on live)
 
 **Minute 3 — Business case (P6)**
 - [x] Quantify **cost ↓** (15–25% ≈ DKK 140–320k/yr) → [[pitch/business-case]] ✅
@@ -47,6 +47,6 @@
 ---
 
 ## Open team decisions you should drive
-- [ ] 🧑 ▶ NEXT Confirm **brand spelling**: "Fritzson" (source doc) vs "Fridson" (repo/domain) — pick one before slides (blocks deck)
-- [ ] 🧑 ▶ NEXT Redeem **Azure credits** ($1,000) — https://luma.link/aMPPeE5k4A — **unblocks Alex (Track 3)**
-- [ ] 🧑 Update team roster — full team is **Slavi, Lennert, Chris, Alex** (team.md still lists 3)
+- [x] ~~Confirm **brand spelling**~~ — **LOCKED: Fridson** ✅ *(2026-06-28)*
+- ~~Redeem **Azure credits** ($1,000)~~ — **NOT NEEDED** (agent runs on Supabase Edge)
+- [x] **Team roster reconciled** — submit **Shuhia, Chris, Lennert** on dashboard; Slavi/Alex are track contributors only (see [[pitch/logistics]] §D)

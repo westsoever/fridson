@@ -14,7 +14,7 @@ The single [[ACTIVE_PLAN]] split into **4 self-contained tracks** so the whole t
 |-------|-------|----------------------|----------------------|---------|
 | **1 · Capture & Data** | Chris | P1 + Roadmap #3 | Supabase schema & seed (reports, assets, providers); Capture pages verify | DB / seed |
 | **2 · Schematic & Projection** | Slavi | P2 (#2) + P4 (#8) | `/schematic`, `/projection` pages & components, marker + activity-feed UI | Frontend |
-| **3 · Agent Backend** | Alex | P3 (#4–#7) | Agent service (Azure) + `/agent` API: select → RFQ → negotiate → book → approve/audit | Backend |
+| **3 · Agent Backend** | Alex | P3 (#4–#7) | Agent service (Supabase Edge) + `/agent` API: select → RFQ → negotiate → book → approve/audit | Backend |
 | **4 · Pitch & Business** | Lennert | P5, P6, P7 | Deck, `pitch/` docs, script, QR prints, fallback recordings, submission | Docs / slides |
 
 *Assignments are a starting suggestion — swap by skill, but keep **one owner per track**.*

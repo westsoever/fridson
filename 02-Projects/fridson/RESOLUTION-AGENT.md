@@ -163,7 +163,9 @@ VendorContact
 
 ---
 
-## Tech approach (hackathon-friendly, Azure-first)
+## Tech approach (hackathon-friendly)
+
+> **2026-06-28 update:** Agent **ships on Supabase Edge** (`supabase/functions/agent/`). Azure credits are **not required** — see [[ACTIVE_PLAN]] blockers.
 
 | Need | Option | Notes |
 |------|--------|-------|
@@ -172,7 +174,7 @@ VendorContact
 | Email send + inbound | Resend / SendGrid + inbound parse | RFQ out, quotes back |
 | Voice calls | Vapi / Bland.ai or Twilio + Realtime API | The "wow" call; have a recorded fallback |
 | Store | Same app DB (Supabase from Lovable) | New tables above |
-| Hosting/credits | Azure ($1,000 credits) | Run the agent service here |
+| Hosting | **Supabase Edge Functions** | ~~Azure ($1,000 credits)~~ — not needed |
 
 Keep the agent as a **separate service/edge function** triggered by ticket creation, so it never blocks the sub-3-second Capture→Route flow.
 

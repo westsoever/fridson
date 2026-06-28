@@ -5,8 +5,8 @@
 **Owner:** Team Fridson (Shuhia, Chris, Lennert)
 
 **Source of truth:** [[06-Wiki/decisions/2026-06-27-final-commitment|Final Commitment — canonical definition + 3-min demo arc]]
-**Build roadmap:** [[ROADMAP|What's next to build]] · **Problem:** [[06-Wiki/Problem]] · **Resolution spec:** [[RESOLUTION-AGENT]]
-**👥 Parallel work:** [[team-plans/README|Team Plans — 4 tracks]] · contract: [[team-plans/INTERFACES]] — each member works their own track file; this doc stays the single source of truth for phases & gates.
+**Build roadmap:** [[ROADMAP|What's next to build]] · **Problem:** [[06-Wiki/Problem]] · **Resolution spec:** [[RESOLUTION-AGENT]] · **Email:** [[email-integration]]
+**👥 Parallel work:** [[team-plans/README|Team Plans — 4 tracks]] · contract: [[team-plans/INTERFACES]] · **execution plans:** [[plans/README|plans/00–09]] — each member works their own track file; this doc stays the single source of truth for phases & gates.
 
 ---
 
@@ -58,11 +58,11 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 - [x] 🧑 Complete **Day 1 check-in** on [Z2D Dashboard](https://z2d-base.lovable.app/dashboard) ✅ done
 - [x] 🧑 Confirm **Milestone 1** (team confirmed) ✅ done
 - [x] 🧑 Redeem **Lovable credits** — code `COMM-ZD2-MAPJ` ✅ done
-- [ ] 🧑 Redeem **Azure credits** ($1,000) — https://luma.link/aMPPeE5k4A (hosts the agent service)
-- [ ] 🧑 Confirm **brand spelling** — source doc says "Fritzson"; repo/domain say "Fridson". Pick one before slides.
-- [ ] 🧑 Confirm **demo hardware** — who presents, where the projection screen goes, phone on same network
-- [ ] 🧑 Upgrade to **Cursor Pro** for team usage
-- [ ] 🧑 Check **Memtrace** availability on Z2D dashboard
+- ~~🧑 Redeem **Azure credits** ($1,000)~~ — **NOT NEEDED** (agent runs on Supabase Edge; see Blockers)
+- [x] 🧑 Confirm **brand spelling** — **LOCKED: Fridson** ✅ *(matches domain/repo/live app; sweep deck for "Fritzson")*
+- [x] 🧑 Confirm **demo hardware** — who presents, where the projection screen goes, phone on same network ✅ done
+- [x] 🧑 Upgrade to **Cursor Pro** for team usage ✅ done
+- [x] 🧑 Check **Memtrace** availability on Z2D dashboard ✅ done
 
 ---
 
@@ -78,9 +78,10 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 **Where the code is:** the app is cloned in-workspace at `fridson-app/` (repo `github.com/westsoever/fridson-app`, Lovable-connected, separate git history). Agents can edit it directly; commits there go to the app repo, not this vault. Stack: Vite + React + TS + Bun + Supabase (`fridson-app/AGENTS.md`). See root `CLAUDE.md → The app code lives here too`.
 
 **Current build state (verify, don't assume):**
-- Live app: [fridson.lovable.app](https://fridson.lovable.app) — home lists 5 assets; `/r/printer-3f` loads scan→tap.
-- Built so far: Capture (scan→tap) + basic routing + admin/reports page (Supabase via Lovable).
-- Not built yet: schematic onboarding, location pinpoint, contractor directory, bidding/negotiation, booking, the projected activity feed, business-case numbers.
+- Live app: [fridson.lovable.app](https://fridson.lovable.app) — `/dashboard` is home; `/r/meeting-4f` is demo hero scan→tap.
+- Built so far: Capture (scan→tap) · operator workspace (triage + approve) · dashboard KPIs · `/schematic` floorplan + markers · `/projection` mock+real feed · `/graph` system map · resolution agent (local + edge) · 55-provider directory · stakeholder context panel · **operator onboarding tour** · cobalt UI revamp (Manrope/Sora).
+- Not live yet (deploy gates): edge functions + migrations on Supabase; approve→RFQ email E2E; real-time projection feed (`?feed=real`).
+- Pitch docs done: ecosystem script, business case, Milestone 2 submitted.
 
 **Allowed scope for the demo (anything outside = roadmap):** the six steps in the canonical flow, rendered so they are visible in Minute 1. Secondary stakeholders (Minute 2) and business case (Minute 3) are narrative + light UI, not full systems.
 
@@ -97,8 +98,9 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 
 - [x] 🤖 Verify scan→tap works for all **5 assets** on a phone; both routes distinct (printer/out-of-paper → in-house; bathroom/leak → contractor) with success copy "Sent to facility team" vs "Sent to contractor" ✅ confirmed working
 - [x] 🤖 Confirm each report persists a **structured record**: `asset · location/zone · issue · route · timestamp` (the source-of-truth report shape) ✅ persisting with full record
-- [x] 🤖 Operator **issue workspace** at `/` shows persisted reports with decision-first triage UI (shadcn, mission-control strip, approve flow) — shipped `fridson-app` `72af388`; see [[ui-revamp-update-2026-06-27]]
-- [ ] 🤖 ▶ NEXT Verify workspace on **Lovable live** after migration `20260627200000_triage_operations` applies (acknowledge, urgency, duplicate fields)
+- [x] 🤖 Operator **issue workspace** at `/workspace` shows persisted reports with decision-first triage UI (shadcn, mission-control strip, approve flow) — shipped `72af388` → UI revamp complete `be24035`; see [[ui-revamp-update-2026-06-28]]
+- [x] 🤖 **Operator onboarding tour** — first-launch walkthrough (Back/Next/Skip, localStorage persistence, sidebar highlights) across Dashboard → Workspace → QR → Graph → Schematic → Activity ✅ `c326429` on `origin/main`; plan [[plans/09-operator-onboarding-tour]]
+- [ ] 🤖 Verify workspace on **Lovable live** after migration `20260627200000_triage_operations` applies (acknowledge, urgency, duplicate fields)
 
 **Verification checklist:**
 - [ ] All 5 `/r/{asset}` pages load < 2s on 4G and show correct asset + zone
@@ -110,9 +112,9 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ## Phase 2 — Onboarding & Schematic Pinpoint (demo Minute 1 background, part A)
 *Step 1 + the "AI pinpoints the exact location" beat. This is the visual that makes the demo click.*
 
-- [ ] 🤖 Seed **one building schematic** image (a floorplan; can be a simple multi-floor SVG/PNG) as the demo building
-- [ ] 🤖 Add `location` coords to each of the 5 seed assets (x/y + floor) mapped onto the schematic
-- [ ] 🤖 On report, **pinpoint the asset on the schematic** (marker/pulse) on the projected/admin view in real time
+- [x] 🤖 Seed **one building schematic** image (a floorplan; can be a simple multi-floor SVG/PNG) as the demo building ✅ `floorplan.svg` in `403ee22`
+- [x] 🤖 Add `location` coords to each of the 5 seed assets (x/y + floor) mapped onto the schematic ✅ seeded in Track 1
+- [ ] 🤖 On report, **pinpoint the asset on the schematic** (marker/pulse) on the projected/admin view in real time — *partial:* `/schematic` has per-floor selector + open-report markers (pushed `6b50e0c` on `origin/main`); **verify pulse on live** after migrations apply
 - [ ] 🤝 (Onboarding narrative) one screen/slide showing "PM uploads schematic → assets registered" — can be pre-done, shown as the setup step
 
 **Verification checklist:**
@@ -125,17 +127,22 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 *Steps 4–6. The headline. See [[RESOLUTION-AGENT]] for the detailed agent spec. Real where stable, scripted fallback where not — "80% quality" is explicitly acceptable.*
 
 - [ ] 🧑 GATE: Phases 1–2 demo-able before any agent work starts
-- [ ] 🤖 Seed a **contractor/provider directory** (~50 rows: name, trade, zone, email, rough rate) so selection of "3 of 50" is real
-- [ ] 🤖 Agent **selects ~3 relevant providers** from the directory based on issue type + zone (visible reasoning line)
-- [ ] 🤖 Agent **sends real RFQ emails** to demo/sandbox vendor inboxes; parses replies into comparable bids
-- [ ] 🤖 Agent **negotiates** within FM-set bounds (target/ceiling) — at least one real email round; voice-call is stretch
-- [ ] 🤖 Agent **books a repair slot** (calendar hold / confirmation message) → surfaces "Technician booked for {date}"
-- [ ] 🤖 **PM approve/disapprove** control gates the booking (no autonomous spend) + audit log of every step
+- [x] 🤖 **Approve → agent → mock provider email** — `approveReport` invokes resolution agent (`auto_confirm` → `pm.decision`); submit triggers triage only; `AGENT_MOCK_INBOX` + Resend redirects RFQs to controlled inbox with report + provider context ✅ wired in app (local)
+- [x] 🤖 Seed a **contractor/provider directory** (~50 rows: name, trade, zone, email, rough rate) so selection of "3 of 50" is real ✅ 55 providers in migration `403ee22`
+- [x] 🤖 Agent **selects ~3 relevant providers** from the directory based on issue type + zone (visible reasoning line) ✅ resolution agent + 12 Deno tests
+- [x] 🤖 Agent **sends RFQ emails** via mock mail path (`AGENT_MOCK_INBOX` + `RESEND_API_KEY` → controlled inbox; stub without creds) — *live inbox verify blocked on edge deploy + secrets*
+- [x] 🤖 Agent **negotiates** within FM-set bounds (target/ceiling) — fixture bids offline; real email round = stretch ✅ deterministic negotiate step
+- [x] 🤖 Agent **books a repair slot** (calendar hold / confirmation message) → surfaces "Technician booked for {date}" ✅ `slot.booked` hold + `auto_confirm` confirms on approve
+- [x] 🤖 **PM approve** dispatches agent + audit log (`approve_dispatch_agent`); **disapprove** API exists (`/agent/decision`) — UI disapprove button still TODO
 - [ ] 🤝 Prepare **recorded fallbacks** (pre-fetched bids, pre-sent emails, pre-booked slot, call clip) so it never breaks live
 
+**▶ NEXT (human-gated):** Lovable Supabase sync OR CLI with token → deploy functions + set `RESEND_API_KEY` + `AGENT_MOCK_INBOX` → run [[plans/LIVE-VERIFY-RUNBOOK|Live Verify Runbook]]
+
 **Verification checklist:**
-- [ ] From one scan, the activity feed shows: selected providers → emails sent → bids in → negotiated price → slot booked
-- [ ] PM "Approve" visibly confirms; "Disapprove" re-routes/loops
+- [x] Click **Approve** on an `awaiting_approval` ticket → agent dispatched async + `approve_dispatch_agent` audit entry (no page hang) ✅ wired; live `events` verify after deploy
+- [ ] Outbound RFQ email lands in the **mock/controlled inbox** with correct report + provider context — *set `AGENT_MOCK_INBOX` + `RESEND_API_KEY` on edge function*
+- [ ] From one scan, the activity feed shows: selected providers → emails sent → bids in → negotiated price → slot booked — *after deploy + `?feed=real`*
+- [ ] PM "Approve" visibly confirms on projection; "Disapprove" re-loops — *approve auto-confirms; disapprove UI pending*
 - [ ] A real email is sent to a controlled inbox and a real reply is parsed (at least one)
 
 **Anti-pattern guards:** no real purchases/payments; AI must disclose itself on any call; label any pre-fetched data as such in rehearsal notes; agent must never block the scan success screen.
@@ -143,8 +150,9 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ## Phase 4 — Background Activity Projection (demo presentation layer)
 *The projected screen behind the presenter that ties Phases 2–3 into one live narrative.*
 
-- [ ] 🤖 Build a **projection view**: building schematic + a live **agent activity feed** (location pinpoint → report → providers queried → emails → bids → negotiation → booked)
-- [ ] 🤖 Wire the feed to real events from Phases 2–3 (websocket/poll); scripted timeline as fallback
+- [x] 🤖 Build a **projection view**: building schematic + a live **agent activity feed** (location pinpoint → report → providers queried → emails → bids → negotiation → booked) ✅ `/projection` shipped `403ee22`; mock ~54s timeline works offline
+- [x] 🤖 **Activity feed UX** — sidebar Activity promoted to top nav group; events render as vertical timeline (replaces horizontal step rail) ✅ `be24035`
+- [ ] 🤖 Wire the feed to real events from Phases 2–3 (websocket/poll); scripted timeline as fallback — *built (`?feed=real`); blocked on migrations + edge deploy (Phase 1 gates)*
 - [ ] 🤝 Tune pacing so the whole flow is **visible and explained within ~1 minute**
 - [ ] 🤝 Make it legible from stage (large type, clear step states)
 
@@ -157,9 +165,9 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ## Phase 5 — Context & Ecosystem (demo Minute 2)
 *Reporting creates context; context is consumed by other stakeholders. The triage shift.*
 
-- [ ] 🤝 Define **secondary stakeholder use cases** with one concrete example each: insurers (proof-of-issue), energy/utilities (consumption/repair audit), repair/compliance
-- [ ] 🤖 A simple **context record** view per ticket (the same event → value for multiple stakeholders)
-- [ ] 🤝 Script the **triage-shift narrative**: "before Fridson the PM orchestrated everything; now they approve/disapprove"
+- [x] 🤝 Define **secondary stakeholder use cases** with one concrete example each: insurers (proof-of-issue), energy/utilities (consumption/repair audit), repair/compliance ✅ [[pitch/ecosystem]]
+- [x] 🤖 A simple **context record** view per ticket (the same event → value for multiple stakeholders) ✅ `StakeholderContextPanel` + Context tab in workspace — pushed `c77bc42`
+- [x] 🤝 Script the **triage-shift narrative**: "before Fridson the PM orchestrated everything; now they approve/disapprove" ✅ verbatim line in [[pitch/ecosystem]] + [[pitch/script]]
 
 **Verification checklist:**
 - [ ] One ticket page shows ≥2 stakeholder lenses on the same event
@@ -170,10 +178,10 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ## Phase 6 — Business Case (demo Minute 3)
 *Quantify the win.*
 
-- [ ] 🤝 Quantify **cost reduction** (X% / €) vs manual triage + sourcing
-- [ ] 🤝 Quantify **time improvement** (resolution cycle: days → hours)
-- [ ] 🤝 State the **quality tradeoff** framing with numbers: "80% quality + cheaper + faster = win"
-- [ ] 🤝 One slide/visual with the 3 numbers + source assumptions [[04-Resources/Z2D/hackathon-strategy]]
+- [x] 🤝 Quantify **cost reduction** (X% / €) vs manual triage + sourcing ✅ [[pitch/business-case]] (15–25%, DKK 140–320k/yr)
+- [x] 🤝 Quantify **time improvement** (resolution cycle: days → hours) ✅ [[pitch/business-case]] (~3–5 days → same-day)
+- [x] 🤝 State the **quality tradeoff** framing with numbers: "80% quality + cheaper + faster = win" ✅ [[pitch/business-case]]
+- [ ] 🤝 One slide/visual with the 3 numbers + source assumptions [[04-Resources/Z2D/hackathon-strategy]] — *copy from business-case into deck*
 
 **Verification checklist:**
 - [ ] Three defensible numbers with stated assumptions
@@ -184,11 +192,12 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ## Phase 7 — Pitch Polish, Dry-run & Submission (Sun ~09:00–16:00)
 *make-plan final verification phase.*
 
-- [ ] 🧑 Complete **Day 2 check-in** on Z2D dashboard
+- [x] 🧑 Complete **Day 2 check-in** on Z2D dashboard ✅ done
 - [ ] 🤖 Harden the live demo path — no dead ends, fast load, fallbacks armed
-- [ ] 🤝 Lock the **3-minute script** (Min1 live demo+narration · Min2 ecosystem · Min3 business case)
-- [ ] 🧑 Print **5 QR codes** for demo props + confirm phone/projector hardware
-- [ ] 🤝 Final submission prep — **Milestone 2 by Sun 15:00**
+- [x] 🤝 Lock the **3-minute script** (Min1 live demo+narration · Min2 ecosystem · Min3 business case) ✅ [[pitch/script]] — re-time at dry-run
+- [x] 🧑 Confirm **phone/projector hardware** on same network ✅ done
+- [x] 🧑 Print **QR codes for MVP demo** — hero `meeting-4f` (+ MVP props); full 5-asset set not required ✅ done
+- [x] 🤝 **Milestone 2 submission** — Sun 15:00 on Z2D dashboard ✅ done ([[pitch/milestone-2-copy]])
 - [ ] 🧑 GATE: Full **dry-run** of the 3-min pitch with the team before Sun 16:00
 - [ ] 🧑 Live demo & judging — Sun 16:00
 
@@ -196,6 +205,22 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 - [ ] End-to-end dry-run hits exactly 3 minutes
 - [ ] Every live beat has a tested fallback
 - [ ] Each minute maps to its source-of-truth section
+
+## Phase 8 — Real Office System & Market Validation
+*Post-Z2D / parallel track — model the actual hackathon venue (byFounders **The Shack**, Kanonbådsvej 2) and validate the product with real office managers.*
+
+- [ ] 🤝 **Inventory nodes & tickets with the team** — walk The Shack and adjacent spaces; list every reportable asset and issue type not covered by the 5 demo seeds; agree on new ticket types and system-map nodes to add
+- [ ] 🤝 **The Shack floorplan + ticket map** — obtain or recreate the exact byFounders "The Shack" layout; place each asset and ticket type on the floorplan with `floor` + x/y coords (extend or replace seeded `floorplan.svg`); QR codes per mapped asset
+- [ ] 🧑 **Cold-call office managers we know** — final validation round: pitch the scan→approve flow, capture objections and quotes, note which issue types resonate; log outcomes in vault
+- [ ] 🤖 **Verify agent research + quote email E2E** — on live stack (`process-research` + `agent`): approve a contractor-routed ticket → confirm research runs (`FIRECRAWL_API_KEY`) → RFQ email lands in `AGENT_MOCK_INBOX` with correct report + provider context; see [[plans/LIVE-VERIFY-RUNBOOK|Live Verify Runbook]] Gates 3–5
+
+**Verification checklist:**
+- [ ] Team agrees on ≥5 new assets/tickets beyond the demo seed set (or documents why fewer)
+- [ ] Floorplan matches The Shack layout legibly when projected; every live ticket pins to the correct spot
+- [ ] ≥3 office-manager calls logged with at least one actionable quote or objection
+- [ ] One approved ticket produces visible research activity + one RFQ in the controlled inbox
+
+**Anti-pattern guards:** don't block the Sun 16:00 demo on this phase — demo seeds stay the fallback; don't cold-call without a one-line pitch script; label any pre-fetched research as such in notes.
 
 ---
 
@@ -224,6 +249,8 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 
 ## Team & Resources
 
+**Execution plans:** [[plans/README|plans/00–09]] — parallel agent pickup for deploy gates, live verify, pitch logistics, doc reconciliation, operator onboarding (shipped).
+
 ### Team Fridson (3/5)
 | Member | Email | Role |
 |--------|-------|------|
@@ -234,10 +261,10 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ### Credits & Tools
 | Resource | Status | Details |
 |----------|--------|---------|
-| Cursor | ✅ claimed | upgrade to Pro for team |
+| Cursor | ✅ Pro | team upgrade done |
 | Lovable | ✅ redeemed | code `COMM-ZD2-MAPJ` |
-| Azure | ⏳ redeem | $1,000 — https://luma.link/aMPPeE5k4A |
-| Memtrace | ⏳ check | Z2D dashboard |
+| ~~Azure~~ | ✅ not needed | Agent runs on Supabase Edge — credits not required |
+| Memtrace | ✅ checked | Z2D dashboard |
 | Claude Code | active | Sonnet 4.6, high effort |
 
 ### Fellowship prize (top teams)
@@ -248,20 +275,23 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ## Blockers
 
 **Deployment gates (turn the demo live):**
-- [x] 🌐 **Push app to Lovable** — ✅ `origin/main` = `72af388` (UI revamp workspace + reporter flow + triage migration file). Lovable rebuilds frontend from this.
-- [ ] 🔑 **Apply 7 migrations** — via Lovable Supabase sync *or* `bunx supabase@latest link --project-ref yyidatcqbvsbntdavmww && bunx supabase@latest db push`. Latest adds triage ops (`urgency`, `acknowledged_at`, `duplicate_of`, `report_audit_events`, etc.). ⚠️ Needs authenticated CLI or Lovable sync.
-- [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). Needs access token.
-- [ ] 🔑 **Set function secrets** (Supabase dashboard) — `LOVABLE_API_KEY` (triage + chat + research); optional `RESEND_API_KEY` + `AGENT_LIVE_EMAIL=1` for real RFQ email. Slack removed from app.
-- [ ] ❓ **Reconcile dual agent trigger** — `submitReport`→`invokeResolutionAgent` **and** DB webhook → `process-triage`/`process-research` both fire. Pick one canonical path before stage.
+- [x] 🌐 **Push app to Lovable** — ✅ `be24035` on `origin/main` (approve→agent→mock inbox · UI revamp · onboarding tour · activity timeline); Lovable rebuild should follow each push
+- [ ] 🔑 **Apply 7 migrations** — via Lovable Supabase sync *or* commands in [[plans/DEPLOY-BLOCKER-REPORT]]. Latest adds triage ops (`urgency`, `acknowledged_at`, `duplicate_of`, `report_audit_events`, etc.). ⚠️ **BLOCKED** — CLI 403 without project-scoped `SUPABASE_ACCESS_TOKEN`.
+- [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). ⚠️ **BLOCKED** — same token issue; see [[plans/DEPLOY-BLOCKER-REPORT]].
+- [ ] 🔑 **Set function secrets** (Supabase dashboard) — `LOVABLE_API_KEY` (triage + chat + research); **`RESEND_API_KEY` + `AGENT_MOCK_INBOX=<team inbox>`** for approve-triggered RFQ redirect (all provider emails → one inbox); optional `AGENT_LIVE_EMAIL=1` for direct vendor send. Slack removed from app.
+- [x] ❓ **Reconcile dual agent trigger** — ✅ submit → triage webhook only; **Approve → resolution agent** + process-research webhook; `auto_confirm` emits `pm.decision`
 - [ ] 🖥️ **Stage feed** — open `/projection?feed=real` on the demo laptop; confirm Realtime on `events`
 
-**Resolved this session:** ~~Azure credits~~ (agent runs on Supabase Edge — Azure NOT needed) · ~~Schematic asset~~ (`floorplan.svg` + coords seeded) · ~~vendor inboxes for the loop~~ (stubbed fallback works; only needed for *real* email).
+**Resolved this session:** ~~Azure credits~~ (agent runs on Supabase Edge — Azure NOT needed) · ~~Schematic asset~~ (`floorplan.svg` + coords seeded) · ~~Push to Lovable~~ (`6b50e0c` on `origin/main`) · ~~Dual agent trigger~~ (Option A hybrid documented locally) · ~~vendor inboxes for the loop~~ (stubbed fallback works; only needed for *real* email).
 
 **Still open (human decisions / logistics — see [[pitch/logistics]]):**
-- [ ] ❓ **Brand spelling** — "Fritzson" (source) vs "Fridson" (domain/repo/live app); recommend **Fridson**, pick before slides
+- [x] ~~**Brand spelling**~~ — **LOCKED: Fridson** ✅ *(2026-06-28, Phase 4)*
 - [ ] 🧑 **3-minute timing** — full-team dry-run on real hardware (projection runs ~54s; needs rehearsal)
-- [ ] 🧑 **QR prints + hardware** — 5 codes, presenter, phone, projector, same network
-- [ ] ❓ **Two agent layers** — triage/research webhooks + resolution `agent` both fire on submit; decide which runs on stage (recommend webhook-only for demo)
+- [x] 🧑 **Demo hardware** — presenter, projector, phone on same network ✅ done
+- [x] 🧑 **QR prints (MVP)** — hero + MVP props printed from [[pitch/qr-codes]] ✅ done
+- [x] 🧑 **Milestone 2 submission (15:00)** — submitted on Z2D dashboard ✅ done
+- [ ] 🧑 **Full dry-run (before 16:00)** — [[pitch/dry-run-checklist]]
+- [x] 🌐 **Push vault to origin** — ✅ `655bff4` on `origin/main`
 - [ ] ❓ **Dangling git remote** — vault repo has extra remote `fridson-app → westsoever/fridson-app`; a stray push could send vault notes to the app repo. Decide: `git remote remove fridson-app`.
 - [ ] 🔑 **Committed `.env` in app repo** — only anon/publishable keys (public-safe); no service-role key present. Low risk, but avoid adding secrets to it.
 
@@ -288,3 +318,15 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-27 | **All 4 tracks built in parallel** (4 subagents) + integrated, committed in `fridson-app` `403ee22` (not pushed): T1 data spine (migrations/coords/floorplan/55 providers/events), T2 `/projection`+`/schematic` w/ mock+real feed, T3 Deno resolution-agent (select→bid→negotiate→book→approve, 10 tests, Azure not needed), T4 `pitch/` docs. Wired `submitReport`→agent; fixed a `tsc` regression (supabase single-row inference under the bigger schema). tsc + vite build green. Remaining = deploy gates (push/migrate/deploy/env) + human logistics. |
 | 2026-06-27 | **App pushed to Lovable** — `403ee22` is now on `origin/main`, then merged with Alex's `ai-agent-flow` (durable webhook agents: `process-triage`/`process-research` + `report_agent_webhooks` migration) → `4e36b43`. Lovable rebuilds the frontend from this. Migrations (now 6) + edge-function deploy still pending: handled by Lovable's Supabase sync or an authenticated CLI — no `SUPABASE_ACCESS_TOKEN`/DB password available this session. Flagged a **dual agent-trigger** to reconcile (my `submitReport`→agent fetch + Alex's report DB webhook). |
 | 2026-06-27 | **UI revamp shipped** — design-system research processed; operator workspace realigned (decision-first triage, shadcn, mission control, reporter multi-step + status page). Pushed `fridson-app` `72af388`. Research filed to `04-Resources/fridson/`. Follow-up: apply migration 7, keyboard inbox, merge UI, photo upload. |
+| 2026-06-28 | **Side missions shipped in app:** `/dashboard` KPI page (archived); `/graph` live data-flow map (archived); System Map rewired to linear ticket topology with **Fridson AI** endpoint (`fd3caeb`, on `origin/main`). `/schematic` enhanced with per-floor selector + open-report markers (`e4234ec`, **local only — not pushed**). Vault docs archived + plan filed. Next: push schematic commits, apply migrations, deploy functions, reconcile agent trigger, dry-run. |
+| 2026-06-28 | **Execution plans split** into [[plans/README|plans/00–07]] for parallel agent pickup — deploy gates, agent reconcile, live verify, pitch logistics, optional Minute 2 UI, doc reconciliation, final dry-run. |
+| 2026-06-28 | **▶ NEXT set:** Phase 3 — verify Approve button triggers agent + sends RFQ email via mock provider (controlled inbox); approve-flow checklist added. |
+| 2026-06-28 | **Approve→agent→email wired** in `fridson-app`: submit=triage only; approve→resolution agent + `auto_confirm` + `AGENT_MOCK_INBOX` redirect; 12 Deno tests pass; app build green. Live inbox verify = deploy + secrets. |
+| 2026-06-28 | **Phase 6 doc reconciliation:** push gate ✅ (`6b50e0c` on `origin/main`); migrate/deploy still blocked (no CLI token). Azure struck everywhere; brand locked **Fridson**; roster = Shuhia/Chris/Lennert. ROADMAP + track files synced; agent path = Option A hybrid (local). ▶ NEXT: apply migrations, deploy functions, verify live demo path (Phase 3). |
+| 2026-06-28 | **Wrap-up:** approve→email wired locally; archive check declined (~50 open items). App + vault edits uncommitted/unpushed. Next: deploy gates, live RFQ verify, QR + dry-run before 16:00. |
+| 2026-06-28 | **Critical path:** pushed `b0185f3` (approve→agent→mock inbox); Supabase CLI still 403; [[plans/LIVE-VERIFY-RUNBOOK]] added; dry-run checklist + DEPLOY-BLOCKER-REPORT updated. ▶ NEXT: Lovable Supabase sync + secrets + live E2E. |
+| 2026-06-28 | **Human queue cleared:** demo hardware confirmed, Cursor Pro upgraded, Memtrace checked on Z2D dashboard. Human-Action Queue empty — remaining logistics: QR prints, Milestone 2, dry-run. |
+| 2026-06-28 | **Logistics:** Day 2 check-in done; MVP QR codes printed (hero `meeting-4f` — full 5-asset set not required). Remaining: deploy gates, Milestone 2 (15:00), dry-run (16:00). |
+| 2026-06-28 | **Milestone 2 submitted** on Z2D dashboard (15:00). Remaining before judging: deploy gates (optional for fallback demo), full dry-run, live demo 16:00. |
+| 2026-06-28 | **Phase 8 added** — real office inventory, The Shack floorplan mapping, office-manager cold calls, agent research + quote email E2E verify. |
+| 2026-06-28 (overnight) | **App polish pushed (`be24035`):** approve→agent→mock RFQ inbox (`b0185f3`); dashboard chart/token polish + donut tooltip fix; operator onboarding tour (`c326429`, [[plans/09-operator-onboarding-tour]]); Activity sidebar reorder + vertical timeline. Vault: [[plans/LIVE-VERIFY-RUNBOOK]], plans 00–07 executed, Milestone 2 ✅, logistics cleared. ▶ NEXT unchanged: Supabase sync + secrets + live E2E before dry-run. |

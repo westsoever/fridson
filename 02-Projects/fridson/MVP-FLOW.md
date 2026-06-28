@@ -187,7 +187,7 @@ Report (created on tap)
 
 ## Open decisions
 
-- [ ] **App host:** Lovable static page vs custom HTML on Azure
+- [x] ~~**App host:** Lovable static page vs custom HTML on Azure~~ — **Lovable locked** (`fridson.lovable.app`)
 - [ ] **Slack:** one webhook with routing in message text, or two channels?
 - [ ] **Demo props:** real office items at The Shack vs printed asset cards
 - [ ] **Naming:** product name for QR landing page header

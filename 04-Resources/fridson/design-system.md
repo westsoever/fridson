@@ -428,6 +428,33 @@ Examples:
 
 ## 6. Design tokens
 
+### 6.0 Implementation (shipped in `fridson-app/src/styles.css`)
+
+Canonical brand palette — **cobalt primary**, not teal/green:
+
+| Token | Value | Use |
+|-------|-------|-----|
+| `--primary` / `--ring` | `#2D5BFF` | CTAs, focus rings, chart primary series, active nav accent |
+| `--background` | `#F4F6FB` | Page background |
+| `--card` | `#FFFFFF` | Elevated panels |
+| `--foreground` | `#0B1220` | Body text |
+| `--muted-foreground` | `#4A5568` | Secondary text |
+| `--secondary` / `--surface` | `#E6ECFB` | Soft surfaces, sidebar accent bg |
+
+**Border radius (B2B — tighter than consumer SaaS):**
+
+| Token | Value |
+|-------|-------|
+| `--radius` | `6px` |
+| `--radius-md` | `6px` (buttons, badges, inputs) |
+| `--radius-lg` | `8px` (cards) |
+
+**Chart series:** `--chart-1` … `--chart-5` map to primary, AI, urgency, muted.
+
+**Status chip helpers:** `src/lib/tokens/status.ts`, `src/lib/tokens/urgency.ts` — always use these instead of raw Tailwind palette classes.
+
+**App shell:** `AppHeader` + `PageContainer` in `src/components/app-shell/`; sidebar nav groups in `app-sidebar.tsx`.
+
 ### 6.1 Color principles
 
 Use calm neutral defaults. Reserve intense color for abnormal conditions requiring action.
