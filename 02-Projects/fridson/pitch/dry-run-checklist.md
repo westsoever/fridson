@@ -38,6 +38,7 @@ Run in order. Do not start the timed 3:00 pitch until all boxes pass.
 | 6 | **Business-case slide ready** | Deck on Minute 3 slide; numbers memorized from [[pitch/business-case]] | [ ] |
 | 7 | **Secondary fallbacks armed** | `FALLBACK-SCAN`, `FALLBACK-FEED`, `FALLBACK-AGENT` tabs open and tested | [ ] |
 | 8 | **Scan-fallback bookmarks** | Phone bookmarks: all 5 `/r/{asset}` URLs (especially `/r/meeting-4f`) | [ ] |
+| 9 | **Approve → RFQ email** | After hero scan: Approve in workspace → check `AGENT_MOCK_INBOX` for RFQ with report ID (or confirm `rfq.sent` in projection feed) | [ ] |
 
 ---
 

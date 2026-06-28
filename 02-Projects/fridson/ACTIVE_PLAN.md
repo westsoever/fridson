@@ -5,7 +5,7 @@
 **Owner:** Team Fridson (Shuhia, Chris, Lennert)
 
 **Source of truth:** [[06-Wiki/decisions/2026-06-27-final-commitment|Final Commitment — canonical definition + 3-min demo arc]]
-**Build roadmap:** [[ROADMAP|What's next to build]] · **Problem:** [[06-Wiki/Problem]] · **Resolution spec:** [[RESOLUTION-AGENT]]
+**Build roadmap:** [[ROADMAP|What's next to build]] · **Problem:** [[06-Wiki/Problem]] · **Resolution spec:** [[RESOLUTION-AGENT]] · **Email:** [[email-integration]]
 **👥 Parallel work:** [[team-plans/README|Team Plans — 4 tracks]] · contract: [[team-plans/INTERFACES]] · **execution plans:** [[plans/README|plans/00–07]] — each member works their own track file; this doc stays the single source of truth for phases & gates.
 
 ---
@@ -134,7 +134,7 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 - [x] 🤖 **PM approve** dispatches agent + audit log (`approve_dispatch_agent`); **disapprove** API exists (`/agent/decision`) — UI disapprove button still TODO
 - [ ] 🤝 Prepare **recorded fallbacks** (pre-fetched bids, pre-sent emails, pre-booked slot, call clip) so it never breaks live
 
-**▶ NEXT (live verify):** deploy `agent` edge function + set `RESEND_API_KEY` + `AGENT_MOCK_INBOX` → confirm RFQ lands in team inbox on Approve
+**▶ NEXT (human-gated):** Lovable Supabase sync OR CLI with token → deploy functions + set `RESEND_API_KEY` + `AGENT_MOCK_INBOX` → run [[plans/LIVE-VERIFY-RUNBOOK|Live Verify Runbook]]
 
 **Verification checklist:**
 - [x] Click **Approve** on an `awaiting_approval` ticket → agent dispatched async + `approve_dispatch_agent` audit entry (no page hang) ✅ wired; live `events` verify after deploy
@@ -255,7 +255,7 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ## Blockers
 
 **Deployment gates (turn the demo live):**
-- [ ] 🌐 **Push app to Lovable** — remote `c77bc42`; **local uncommitted/unpushed** approve→email workflow + UI edits — push before demo
+- [x] 🌐 **Push app to Lovable** — ✅ `b0185f3` on `origin/main` (approve→agent→email + UI polish); Lovable rebuild in progress
 - [ ] 🔑 **Apply 7 migrations** — via Lovable Supabase sync *or* commands in [[plans/DEPLOY-BLOCKER-REPORT]]. Latest adds triage ops (`urgency`, `acknowledged_at`, `duplicate_of`, `report_audit_events`, etc.). ⚠️ **BLOCKED** — CLI 403 without project-scoped `SUPABASE_ACCESS_TOKEN`.
 - [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). ⚠️ **BLOCKED** — same token issue; see [[plans/DEPLOY-BLOCKER-REPORT]].
 - [ ] 🔑 **Set function secrets** (Supabase dashboard) — `LOVABLE_API_KEY` (triage + chat + research); **`RESEND_API_KEY` + `AGENT_MOCK_INBOX=<team inbox>`** for approve-triggered RFQ redirect (all provider emails → one inbox); optional `AGENT_LIVE_EMAIL=1` for direct vendor send. Slack removed from app.
@@ -303,3 +303,4 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-28 | **Approve→agent→email wired** in `fridson-app`: submit=triage only; approve→resolution agent + `auto_confirm` + `AGENT_MOCK_INBOX` redirect; 12 Deno tests pass; app build green. Live inbox verify = deploy + secrets. |
 | 2026-06-28 | **Phase 6 doc reconciliation:** push gate ✅ (`6b50e0c` on `origin/main`); migrate/deploy still blocked (no CLI token). Azure struck everywhere; brand locked **Fridson**; roster = Shuhia/Chris/Lennert. ROADMAP + track files synced; agent path = Option A hybrid (local). ▶ NEXT: apply migrations, deploy functions, verify live demo path (Phase 3). |
 | 2026-06-28 | **Wrap-up:** approve→email wired locally; archive check declined (~50 open items). App + vault edits uncommitted/unpushed. Next: deploy gates, live RFQ verify, QR + dry-run before 16:00. |
+| 2026-06-28 | **Critical path:** pushed `b0185f3` (approve→agent→mock inbox); Supabase CLI still 403; [[plans/LIVE-VERIFY-RUNBOOK]] added; dry-run checklist + DEPLOY-BLOCKER-REPORT updated. ▶ NEXT: Lovable Supabase sync + secrets + live E2E. |

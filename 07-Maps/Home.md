@@ -39,7 +39,7 @@
 
 ## Recent Captures
 *Inbox clear · 2026-06-28 (wrap-up)*
-- **Approve→agent→email wired** in `fridson-app` (local): submit=triage only; Approve dispatches resolution agent + `AGENT_MOCK_INBOX` redirect; 12 Deno tests pass — **not yet pushed/deployed**
+- **Approve→agent→email wired** — pushed `b0185f3` to Lovable; Supabase deploy still human-gated ([[02-Projects/fridson/plans/LIVE-VERIFY-RUNBOOK|Live Verify Runbook]])
 - [[02-Projects/fridson/plans/README|Execution plans 00–07]] — hybrid agent path, stakeholder Context tab, pitch logistics docs
 - [[02-Projects/fridson/plans/DEPLOY-BLOCKER-REPORT|Deploy blocker report]] — Supabase migrate/deploy blocked on CLI token
 - App on Lovable `c77bc42` · [fridson.lovable.app](https://fridson.lovable.app) · brand locked **Fridson**

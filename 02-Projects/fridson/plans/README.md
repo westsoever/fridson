@@ -18,6 +18,7 @@
 | **1** | [[01-deploy-gates\|01-deploy-gates.md]] | Push, migrate, deploy, secrets | 1–2 hr |
 | **2** | [[02-reconcile-agent-path\|02-reconcile-agent-path.md]] | One canonical agent trigger | 1–2 hr |
 | **3** | [[03-verify-live-demo-path\|03-verify-live-demo-path.md]] | E2E demo path verification | 1–2 hr |
+| **—** | [[LIVE-VERIFY-RUNBOOK\|LIVE-VERIFY-RUNBOOK.md]] | Post-deploy hero flow + approve email | 15 min |
 | **4** | [[04-pitch-logistics\|04-pitch-logistics.md]] | Human logistics + fallbacks | parallel |
 | **5** | [[05-minute-2-context-ui\|05-minute-2-context-ui.md]] | Stakeholder lens UI (optional) | 2–3 hr |
 | **6** | [[06-doc-reconciliation\|06-doc-reconciliation.md]] | Vault docs ↔ code reality | 30 min |
