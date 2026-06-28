@@ -11,13 +11,9 @@
 ## A. Demo prop / hardware checklist (🧑 human)
 
 - [x] **QR asset doc ready** — URLs + print spec in [[pitch/qr-codes]] ✅
-- [ ] **Print 5 QR codes** — one per seeded asset, on the table as props:
-  - *🧑 **Ready to run:** Open [[pitch/qr-codes]] → generate 5 PNGs from the URL table → print ≥8×8 cm black-on-white → label each prop → test scan from ~30 cm on presenter phone.*
-  - [ ] `printer-3f` → `/r/printer-3f` (Printer · 3rd floor East)
-  - [ ] `bathroom-2f` → `/r/bathroom-2f` (Bathroom · 2nd floor)
-  - [ ] `meeting-4f` → `/r/meeting-4f` (Meeting room · 4th floor) — **hero asset for live scan**
-  - [ ] `pump-basement` → `/r/pump-basement` (Pump room · Basement)
-  - [ ] `kitchen-1f` → `/r/kitchen-1f` (Kitchen · Ground floor)
+- [x] **Print MVP QR codes** — hero `meeting-4f` (+ props needed for live scan); full 5-asset print set not required ✅
+  - [x] `meeting-4f` → `/r/meeting-4f` (Meeting room · 4th floor) — **hero asset for live scan**
+  - ~~`printer-3f`, `bathroom-2f`, `pump-basement`, `kitchen-1f`~~ — optional; not printed for MVP demo
 - [ ] **Presenter confirmed** — one person drives phone + narration (decide who; default the most rehearsed).
   - *🧑 **Ready to run:** Team standup — assign one presenter (phone + narration). Write name here: ___________
 - [ ] **Phone ready** — unlocked, camera app primed, brightness up, notifications off, asset URLs bookmarked as scan-fallback.
@@ -40,17 +36,15 @@
 
 ## C. Day-2 check-in + Milestone-2 submission (🧑 human)
 
-- [ ] **Sun ~09:00 — Day 2 check-in** on the [Z2D Dashboard](https://z2d-base.lovable.app/dashboard).
-  - *🧑 **Ready to run:** Log in → complete Day 2 check-in form → confirm green status before build work continues.*
+- [x] **Sun ~09:00 — Day 2 check-in** on the [Z2D Dashboard](https://z2d-base.lovable.app/dashboard). ✅ done
 - [ ] **Harden the live path** (with Tracks 1–3) — no dead ends, fast load, fallbacks armed.
 - [ ] **Lock the 3-min script** ([[pitch/script]]) — re-time at dry-run, adjust to hit exactly 3:00.
 - [x] **Milestone 2 copy-paste fields drafted** — [[pitch/milestone-2-copy]] ✅
-- [ ] **By Sun 15:00 — Milestone 2 submission** complete on the dashboard:
-  - *🧑 **Ready to run:** Open [[pitch/milestone-2-copy]] → paste all fields → attach deck + demo recording → submit before 15:00.*
-  - [ ] Project name **Fridson** + one-line description ("a suite of AI employees for property management").
-  - [ ] Live app link (fridson.lovable.app) + repo link.
-  - [ ] Pitch/deck attached; demo recording attached as backup.
-  - [ ] Team roster: **Shuhia, Chris, Lennert** (per [[ACTIVE_PLAN]] — see §D).
+- [x] **By Sun 15:00 — Milestone 2 submission** complete on the dashboard ✅ done
+  - [x] Project name **Fridson** + one-line description
+  - [x] Live app link + repo link
+  - [x] Pitch/deck + demo recording attached
+  - [x] Team roster: **Shuhia, Chris, Lennert**
 - [ ] **Before Sun 16:00 — GATE: full-team dry-run** of the 3-min pitch; use [[pitch/dry-run-checklist]]; confirm acceptance criteria (exactly 3:00, each minute maps to source, every live beat has a tested fallback).
   - *🧑 **Ready to run:** Whole team on stage → run T-10 checklist → timed 3:00 run → optional failure drill from dry-run doc.*
 

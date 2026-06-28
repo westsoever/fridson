@@ -1,5 +1,6 @@
 # Milestone 2 — Copy-Paste Fields (Z2D Dashboard)
 
+**Status:** ✅ **Submitted** Sun 28 Jun 15:00
 **Due:** Sun 28 Jun **15:00**
 **Dashboard:** https://z2d-base.lovable.app/dashboard
 **Related:** [[pitch/logistics]] · [[ACTIVE_PLAN]]
@@ -64,8 +65,8 @@ https://github.com/westsoever/fridson-app
 
 | Attachment | Source | Status |
 |------------|--------|--------|
-| Pitch deck | Team slide deck (sweep for **Fridson** spelling) | [ ] ready |
-| Demo recording | Full 60s flow fallback or dry-run capture | [ ] ready |
+| Pitch deck | Team slide deck (sweep for **Fridson** spelling) | [x] submitted |
+| Demo recording | Full 60s flow fallback or dry-run capture | [x] submitted |
 
 Deck and recording paths are team-local — attach whatever file the dashboard accepts (PDF/PPT + MP4/MOV).
 
@@ -73,11 +74,11 @@ Deck and recording paths are team-local — attach whatever file the dashboard a
 
 ## Pre-submit sweep (2 min)
 
-- [ ] Every field says **Fridson** — not "Fritzson"
-- [ ] Live app loads on phone (4G or venue Wi-Fi)
-- [ ] Repo link opens `westsoever/fridson-app`
-- [ ] Team roster matches ACTIVE_PLAN (Shuhia, Chris, Lennert)
-- [ ] Deck + backup recording attached
+- [x] Every field says **Fridson** — not "Fritzson"
+- [x] Live app loads on phone (4G or venue Wi-Fi)
+- [x] Repo link opens `westsoever/fridson-app`
+- [x] Team roster matches ACTIVE_PLAN (Shuhia, Chris, Lennert)
+- [x] Deck + backup recording attached
 
 ---
 

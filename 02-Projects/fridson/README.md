@@ -34,11 +34,11 @@ Agents working in this vault can directly edit `fridson-app/`. The app folder is
 - [ ] 🖥️ **Live verify** — [[plans/LIVE-VERIFY-RUNBOOK]] (hero scan → Approve → RFQ inbox → projection feed)
 
 **Human logistics (Sun 28 Jun):**
-- [ ] 🧑 **QR prints + hardware** — [[pitch/qr-codes]] · phone + projector same network
-- [ ] 🧑 **Milestone 2 (15:00)** — [[pitch/milestone-2-copy]]
+- [x] 🧑 **Demo hardware** — presenter, projector, phone on same network ✅
+- [x] 🧑 **Day 2 check-in** — Z2D dashboard ✅
+- [x] 🧑 **QR prints (MVP)** — hero `meeting-4f` + MVP props from [[pitch/qr-codes]] ✅
+- [x] 🧑 **Milestone 2 (15:00)** — submitted on Z2D dashboard ✅
 - [ ] 🧑 **Full dry-run (before 16:00)** — [[pitch/dry-run-checklist]]
-- [ ] 🧑 **Demo hardware** — presenter, projection placement, same Wi-Fi
 
 **Decisions / cleanup:**
 - [ ] ❓ **Dangling vault remote** `fridson-app → westsoever/fridson-app` — remove?
-- [ ] 🌐 **Push vault to origin** — knowledgespace `main` has unpushed plan + wrap-up edits

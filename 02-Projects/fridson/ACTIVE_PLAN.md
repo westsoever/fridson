@@ -60,9 +60,9 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 - [x] 🧑 Redeem **Lovable credits** — code `COMM-ZD2-MAPJ` ✅ done
 - ~~🧑 Redeem **Azure credits** ($1,000)~~ — **NOT NEEDED** (agent runs on Supabase Edge; see Blockers)
 - [x] 🧑 Confirm **brand spelling** — **LOCKED: Fridson** ✅ *(matches domain/repo/live app; sweep deck for "Fritzson")*
-- [ ] 🧑 Confirm **demo hardware** — who presents, where the projection screen goes, phone on same network
-- [ ] 🧑 Upgrade to **Cursor Pro** for team usage
-- [ ] 🧑 Check **Memtrace** availability on Z2D dashboard
+- [x] 🧑 Confirm **demo hardware** — who presents, where the projection screen goes, phone on same network ✅ done
+- [x] 🧑 Upgrade to **Cursor Pro** for team usage ✅ done
+- [x] 🧑 Check **Memtrace** availability on Z2D dashboard ✅ done
 
 ---
 
@@ -189,11 +189,12 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ## Phase 7 — Pitch Polish, Dry-run & Submission (Sun ~09:00–16:00)
 *make-plan final verification phase.*
 
-- [ ] 🧑 Complete **Day 2 check-in** on Z2D dashboard
+- [x] 🧑 Complete **Day 2 check-in** on Z2D dashboard ✅ done
 - [ ] 🤖 Harden the live demo path — no dead ends, fast load, fallbacks armed
 - [x] 🤝 Lock the **3-minute script** (Min1 live demo+narration · Min2 ecosystem · Min3 business case) ✅ [[pitch/script]] — re-time at dry-run
-- [ ] 🧑 Print **5 QR codes** for demo props + confirm phone/projector hardware
-- [ ] 🤝 Final submission prep — **Milestone 2 by Sun 15:00**
+- [x] 🧑 Confirm **phone/projector hardware** on same network ✅ done
+- [x] 🧑 Print **QR codes for MVP demo** — hero `meeting-4f` (+ MVP props); full 5-asset set not required ✅ done
+- [x] 🤝 **Milestone 2 submission** — Sun 15:00 on Z2D dashboard ✅ done ([[pitch/milestone-2-copy]])
 - [ ] 🧑 GATE: Full **dry-run** of the 3-min pitch with the team before Sun 16:00
 - [ ] 🧑 Live demo & judging — Sun 16:00
 
@@ -241,10 +242,10 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 ### Credits & Tools
 | Resource | Status | Details |
 |----------|--------|---------|
-| Cursor | ✅ claimed | upgrade to Pro for team |
+| Cursor | ✅ Pro | team upgrade done |
 | Lovable | ✅ redeemed | code `COMM-ZD2-MAPJ` |
 | ~~Azure~~ | ✅ not needed | Agent runs on Supabase Edge — credits not required |
-| Memtrace | ⏳ check | Z2D dashboard |
+| Memtrace | ✅ checked | Z2D dashboard |
 | Claude Code | active | Sonnet 4.6, high effort |
 
 ### Fellowship prize (top teams)
@@ -267,10 +268,11 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 **Still open (human decisions / logistics — see [[pitch/logistics]]):**
 - [x] ~~**Brand spelling**~~ — **LOCKED: Fridson** ✅ *(2026-06-28, Phase 4)*
 - [ ] 🧑 **3-minute timing** — full-team dry-run on real hardware (projection runs ~54s; needs rehearsal)
-- [ ] 🧑 **QR prints + hardware** — 5 codes ([[pitch/qr-codes]]), presenter, phone, projector, same network
-- [ ] 🧑 **Milestone 2 submission (15:00)** — paste from [[pitch/milestone-2-copy]]
+- [x] 🧑 **Demo hardware** — presenter, projector, phone on same network ✅ done
+- [x] 🧑 **QR prints (MVP)** — hero + MVP props printed from [[pitch/qr-codes]] ✅ done
+- [x] 🧑 **Milestone 2 submission (15:00)** — submitted on Z2D dashboard ✅ done
 - [ ] 🧑 **Full dry-run (before 16:00)** — [[pitch/dry-run-checklist]]
-- [ ] 🌐 **Push vault to origin** — knowledgespace `main` ahead 2 commits (`5ac85ad` plans + logistics docs)
+- [x] 🌐 **Push vault to origin** — ✅ `655bff4` on `origin/main`
 - [ ] ❓ **Dangling git remote** — vault repo has extra remote `fridson-app → westsoever/fridson-app`; a stray push could send vault notes to the app repo. Decide: `git remote remove fridson-app`.
 - [ ] 🔑 **Committed `.env` in app repo** — only anon/publishable keys (public-safe); no service-role key present. Low risk, but avoid adding secrets to it.
 
@@ -304,3 +306,6 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-28 | **Phase 6 doc reconciliation:** push gate ✅ (`6b50e0c` on `origin/main`); migrate/deploy still blocked (no CLI token). Azure struck everywhere; brand locked **Fridson**; roster = Shuhia/Chris/Lennert. ROADMAP + track files synced; agent path = Option A hybrid (local). ▶ NEXT: apply migrations, deploy functions, verify live demo path (Phase 3). |
 | 2026-06-28 | **Wrap-up:** approve→email wired locally; archive check declined (~50 open items). App + vault edits uncommitted/unpushed. Next: deploy gates, live RFQ verify, QR + dry-run before 16:00. |
 | 2026-06-28 | **Critical path:** pushed `b0185f3` (approve→agent→mock inbox); Supabase CLI still 403; [[plans/LIVE-VERIFY-RUNBOOK]] added; dry-run checklist + DEPLOY-BLOCKER-REPORT updated. ▶ NEXT: Lovable Supabase sync + secrets + live E2E. |
+| 2026-06-28 | **Human queue cleared:** demo hardware confirmed, Cursor Pro upgraded, Memtrace checked on Z2D dashboard. Human-Action Queue empty — remaining logistics: QR prints, Milestone 2, dry-run. |
+| 2026-06-28 | **Logistics:** Day 2 check-in done; MVP QR codes printed (hero `meeting-4f` — full 5-asset set not required). Remaining: deploy gates, Milestone 2 (15:00), dry-run (16:00). |
+| 2026-06-28 | **Milestone 2 submitted** on Z2D dashboard (15:00). Remaining before judging: deploy gates (optional for fallback demo), full dry-run, live demo 16:00. |

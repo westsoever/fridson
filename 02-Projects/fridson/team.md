@@ -20,9 +20,9 @@ Admin account on dashboard: shuhia.on@gmail.com. See [[team-plans/README]] for f
 
 ## Dashboard
 - URL: https://z2d-base.lovable.app/dashboard
-- Day 1 Check-in: pending
-- Day 2 Check-in: pending
+- Day 1 Check-in: done
+- Day 2 Check-in: done
 
 ## Milestones
 - Milestone 1 · Sat 14:00 — Team confirmed
-- Milestone 2 · Sun 15:00 — Submission done
+- Milestone 2 · Sun 15:00 — ✅ submitted

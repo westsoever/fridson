@@ -32,7 +32,7 @@ Run in order. Do not start the timed 3:00 pitch until all boxes pass.
 |---|-------|---------------|------|
 | 1 | **Projection view open + reset** | Open `https://fridson.lovable.app/projection?feed=real` on the big screen; schematic legible from back of room; feed zeroed/idle | [ ] |
 | 2 | **Phone on venue Wi-Fi** | Presenter phone unlocked, brightness max, notifications off, camera app open, same network as laptop/projector | [ ] |
-| 3 | **5 QR codes on table** | All printed from [[pitch/qr-codes]]; **`meeting-4f` hero** within arm's reach; each scans from ~30 cm | [ ] |
+| 3 | **MVP QR on table** | Hero `meeting-4f` printed from [[pitch/qr-codes]]; within arm's reach; scans from ~30 cm (full 5-asset set not required) | [x] |
 | 4 | **Backup tab — workspace** | `https://fridson.lovable.app/workspace` (or admin/reports) open; shows persisted report if feed/Slack fails | [ ] |
 | 5 | **Full-flow recording at 0:00** | `FALLBACK-FULL` tab cued; switch keystroke confirmed | [ ] |
 | 6 | **Business-case slide ready** | Deck on Minute 3 slide; numbers memorized from [[pitch/business-case]] | [ ] |
@@ -68,8 +68,8 @@ Run once with the team watching:
 
 | When | Action | Who |
 |------|--------|-----|
-| Sun ~09:00 | Day 2 check-in on [Z2D Dashboard](https://z2d-base.lovable.app/dashboard) | Any team member with login |
+| Sun ~09:00 | ~~Day 2 check-in~~ on [Z2D Dashboard](https://z2d-base.lovable.app/dashboard) | ✅ done |
 | Before dry-run | Record + cue all 4 fallback clips | Tracks 1–3 |
-| Sun **15:00** | Milestone 2 submit — use [[pitch/milestone-2-copy]] | Lennert or admin (Shuhia) |
+| Sun **15:00** | ~~Milestone 2 submit~~ — [[pitch/milestone-2-copy]] | ✅ done |
 | Before **16:00** | Full-team dry-run using this checklist | Whole team |
 | **16:00** | Live demo & judging | Presenter + team |
