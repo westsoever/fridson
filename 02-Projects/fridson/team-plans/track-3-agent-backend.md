@@ -11,7 +11,7 @@
 ---
 
 ## You own
-- The agent service (host on **Azure** — see blocker) + the `/agent` API
+- The agent service (Supabase Edge — **Azure NOT needed**) + the `/agent` API
 - Provider **selection logic**, email RFQ/parse, negotiation, booking, approve/disapprove, audit log
 - Writing events to the shared feed channel per [[INTERFACES]] §4
 
@@ -20,7 +20,7 @@
 
 ## Depends on
 - Track 1: provider directory + report object (the GATE — don't start heavy build until #1 + directory are demo-able)
-- Blockers: **Azure credits**, **demo vendor inboxes** (coordinate with Track 4 to create 2–3 controlled inboxes)
+- Blockers: ~~**Azure credits**~~ (not needed) · **demo vendor inboxes** optional (coordinate with Track 4 for controlled inbox if using real Resend email)
 
 ---
 

@@ -8,6 +8,7 @@
 ## Active Projects
 - [[02-Projects/fridson/ACTIVE_PLAN|Fridson — AI Employees for Property Management]] — Team Fridson · demo Sun 28 Jun 16:00
   - [[02-Projects/fridson/team-plans/README|Team Plans — 4 parallel tracks]] (Chris=data · Slavi=frontend · Alex=agent · Lennert=pitch)
+  - [[02-Projects/fridson/plans/README|Execution plans (00–07)]] — parallel agent pickup for demo gates
   - [[02-Projects/fridson/ROADMAP|Build Roadmap]] · [[02-Projects/fridson/RESOLUTION-AGENT|Resolution Agent spec]]
   - [[02-Projects/fridson/MVP-FLOW|MVP Flow — Scan, Tap, Route]] · [[02-Projects/fridson/LOVABLE-PROMPT|Lovable Prompt + Validation Map]]
   - [[02-Projects/fridson/ui-revamp-update-2026-06-27|UI revamp update]] · [[04-Resources/fridson/design-system|Design system]]
@@ -37,8 +38,10 @@
 *(populate as you meet people — `05-Knowledge/People/`)*
 
 ## Recent Captures
-*Inbox clear · 2026-06-27 (wrap-up)*
-- [[04-Resources/fridson/design-system|Design system]] + HMI/ticketing research → `04-Resources/fridson/`
-- [[02-Projects/fridson/ui-revamp-update-2026-06-27|UI revamp]] shipped in `fridson-app` `72af388` — decision-first workspace, reporter flow, triage migration
-- [[02-Projects/fridson/team-plans/README|Team Plans]] — 4 tracks shipped; deploy gates remain (migrations + edge functions)
+*Inbox clear · 2026-06-28 (wrap-up)*
+- [[02-Projects/fridson/system-graph-side-mission-2026-06-27|System Map]] — live data-flow graph at `/graph`; linear ticket topology + Fridson AI (`fd3caeb`, pushed)
+- [[02-Projects/fridson/dashboard-side-mission-2026-06-27|Dashboard]] — read-only KPI/analytics at `/dashboard` (side mission complete)
+- [[02-Projects/fridson/plans/system-map-linear-flow|System Map linear flow plan]] — topology spec for per-ticket path highlighting
+- `/schematic` — per-floor selector + open-report markers (`e4234ec`, **local — push pending**)
+- [[02-Projects/fridson/ui-revamp-update-2026-06-27|UI revamp]] at `72af388`; [[02-Projects/fridson/team-plans/README|Team Plans]] — 4 tracks built; deploy gates remain
 - Demo live at [fridson.lovable.app](https://fridson.lovable.app)
