@@ -21,4 +21,24 @@ Agents working in this vault can directly edit `fridson-app/`. The app folder is
 ## Where to look
 - **What to build next →** [[ROADMAP]] (sequenced build backlog with acceptance criteria)
 - **Phases, gates & demo arc →** [[ACTIVE_PLAN]]
-- **Open blockers →** see [[ACTIVE_PLAN#Blockers]]
+- **Execution plans →** [[plans/README|plans/00–07]]
+
+---
+
+## Blockers
+
+**Deployment (demo-critical):**
+- [ ] 🔑 **Apply migrations + deploy edge functions** — CLI 403 without `SUPABASE_ACCESS_TOKEN`; see [[plans/DEPLOY-BLOCKER-REPORT]]
+- [ ] 🔑 **Set function secrets** — `LOVABLE_API_KEY`, `RESEND_API_KEY`, `AGENT_MOCK_INBOX=<team inbox>` on `agent` function
+- [ ] 🌐 **Push app changes to Lovable** — approve→agent→email workflow wired locally (uncommitted in `fridson-app/`); must push + deploy before live verify
+- [ ] 🖥️ **Stage feed** — `/projection?feed=real` on demo laptop; confirm Realtime on `events`
+
+**Human logistics (Sun 28 Jun):**
+- [ ] 🧑 **QR prints + hardware** — [[pitch/qr-codes]] · phone + projector same network
+- [ ] 🧑 **Milestone 2 (15:00)** — [[pitch/milestone-2-copy]]
+- [ ] 🧑 **Full dry-run (before 16:00)** — [[pitch/dry-run-checklist]]
+- [ ] 🧑 **Demo hardware** — presenter, projection placement, same Wi-Fi
+
+**Decisions / cleanup:**
+- [ ] ❓ **Dangling vault remote** `fridson-app → westsoever/fridson-app` — remove?
+- [ ] 🌐 **Push vault to origin** — knowledgespace `main` has unpushed plan + wrap-up edits

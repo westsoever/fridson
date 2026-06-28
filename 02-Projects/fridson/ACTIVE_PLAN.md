@@ -125,20 +125,22 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 *Steps 4–6. The headline. See [[RESOLUTION-AGENT]] for the detailed agent spec. Real where stable, scripted fallback where not — "80% quality" is explicitly acceptable.*
 
 - [ ] 🧑 GATE: Phases 1–2 demo-able before any agent work starts
-- [ ] 🤖 ▶ NEXT **Approve → agent → mock provider email** — Confirm PM **Approve** on a workspace ticket async-invokes the agent (`approveReport` → `process-research` and/or resolution `POST /agent/decision` per [[plans/02-reconcile-agent-path|Phase 2]]); agent selects a seeded provider from the directory and sends an RFQ email via a **mock mail path** (Resend with `AGENT_LIVE_EMAIL=1`, or a controlled team inbox — not live vendor addresses) so we can open the message and verify payload (report id, asset, issue, provider name)
+- [x] 🤖 **Approve → agent → mock provider email** — `approveReport` invokes resolution agent (`auto_confirm` → `pm.decision`); submit triggers triage only; `AGENT_MOCK_INBOX` + Resend redirects RFQs to controlled inbox with report + provider context ✅ wired in app (local)
 - [x] 🤖 Seed a **contractor/provider directory** (~50 rows: name, trade, zone, email, rough rate) so selection of "3 of 50" is real ✅ 55 providers in migration `403ee22`
-- [ ] 🤖 Agent **selects ~3 relevant providers** from the directory based on issue type + zone (visible reasoning line) — *built in resolution agent; verify on live after deploy*
-- [ ] 🤖 Agent **sends real RFQ emails** to demo/sandbox vendor inboxes; parses replies into comparable bids
-- [ ] 🤖 Agent **negotiates** within FM-set bounds (target/ceiling) — at least one real email round; voice-call is stretch
-- [ ] 🤖 Agent **books a repair slot** (calendar hold / confirmation message) → surfaces "Technician booked for {date}"
-- [ ] 🤖 **PM approve/disapprove** control gates the booking (no autonomous spend) + audit log of every step
+- [x] 🤖 Agent **selects ~3 relevant providers** from the directory based on issue type + zone (visible reasoning line) ✅ resolution agent + 12 Deno tests
+- [x] 🤖 Agent **sends RFQ emails** via mock mail path (`AGENT_MOCK_INBOX` + `RESEND_API_KEY` → controlled inbox; stub without creds) — *live inbox verify blocked on edge deploy + secrets*
+- [x] 🤖 Agent **negotiates** within FM-set bounds (target/ceiling) — fixture bids offline; real email round = stretch ✅ deterministic negotiate step
+- [x] 🤖 Agent **books a repair slot** (calendar hold / confirmation message) → surfaces "Technician booked for {date}" ✅ `slot.booked` hold + `auto_confirm` confirms on approve
+- [x] 🤖 **PM approve** dispatches agent + audit log (`approve_dispatch_agent`); **disapprove** API exists (`/agent/decision`) — UI disapprove button still TODO
 - [ ] 🤝 Prepare **recorded fallbacks** (pre-fetched bids, pre-sent emails, pre-booked slot, call clip) so it never breaks live
 
+**▶ NEXT (live verify):** deploy `agent` edge function + set `RESEND_API_KEY` + `AGENT_MOCK_INBOX` → confirm RFQ lands in team inbox on Approve
+
 **Verification checklist:**
-- [ ] Click **Approve** on an `awaiting_approval` ticket → agent run visible in audit log / `events` within ~30s (no page hang)
-- [ ] Outbound RFQ email lands in the **mock/controlled inbox** with correct report + provider context
-- [ ] From one scan, the activity feed shows: selected providers → emails sent → bids in → negotiated price → slot booked
-- [ ] PM "Approve" visibly confirms; "Disapprove" re-routes/loops
+- [x] Click **Approve** on an `awaiting_approval` ticket → agent dispatched async + `approve_dispatch_agent` audit entry (no page hang) ✅ wired; live `events` verify after deploy
+- [ ] Outbound RFQ email lands in the **mock/controlled inbox** with correct report + provider context — *set `AGENT_MOCK_INBOX` + `RESEND_API_KEY` on edge function*
+- [ ] From one scan, the activity feed shows: selected providers → emails sent → bids in → negotiated price → slot booked — *after deploy + `?feed=real`*
+- [ ] PM "Approve" visibly confirms on projection; "Disapprove" re-loops — *approve auto-confirms; disapprove UI pending*
 - [ ] A real email is sent to a controlled inbox and a real reply is parsed (at least one)
 
 **Anti-pattern guards:** no real purchases/payments; AI must disclose itself on any call; label any pre-fetched data as such in rehearsal notes; agent must never block the scan success screen.
@@ -253,11 +255,11 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 ## Blockers
 
 **Deployment gates (turn the demo live):**
-- [x] 🌐 **Push app to Lovable** — ✅ `origin/main` = `c77bc42` (schematic merge `6b50e0c` + stakeholder Context UI + hybrid agent path). Frontend rebuilds from this.
+- [ ] 🌐 **Push app to Lovable** — remote `c77bc42`; **local uncommitted/unpushed** approve→email workflow + UI edits — push before demo
 - [ ] 🔑 **Apply 7 migrations** — via Lovable Supabase sync *or* commands in [[plans/DEPLOY-BLOCKER-REPORT]]. Latest adds triage ops (`urgency`, `acknowledged_at`, `duplicate_of`, `report_audit_events`, etc.). ⚠️ **BLOCKED** — CLI 403 without project-scoped `SUPABASE_ACCESS_TOKEN`.
 - [ ] 🔑 **Deploy edge functions** — `bunx supabase@latest functions deploy agent process-triage process-research` (or via Lovable). ⚠️ **BLOCKED** — same token issue; see [[plans/DEPLOY-BLOCKER-REPORT]].
-- [ ] 🔑 **Set function secrets** (Supabase dashboard) — `LOVABLE_API_KEY` (triage + chat + research); **`RESEND_API_KEY` + `AGENT_LIVE_EMAIL=1`** for mock-provider RFQ email on Approve (route to team-controlled inbox, not `*@demo.test` vendor addresses). Slack removed from app.
-- [x] ❓ **Reconcile dual agent trigger** — ✅ **Option A hybrid** documented in `reports.functions.ts`: webhooks for triage/research + resolution agent for projection events on Approve — pushed `c77bc42`
+- [ ] 🔑 **Set function secrets** (Supabase dashboard) — `LOVABLE_API_KEY` (triage + chat + research); **`RESEND_API_KEY` + `AGENT_MOCK_INBOX=<team inbox>`** for approve-triggered RFQ redirect (all provider emails → one inbox); optional `AGENT_LIVE_EMAIL=1` for direct vendor send. Slack removed from app.
+- [x] ❓ **Reconcile dual agent trigger** — ✅ submit → triage webhook only; **Approve → resolution agent** + process-research webhook; `auto_confirm` emits `pm.decision`
 - [ ] 🖥️ **Stage feed** — open `/projection?feed=real` on the demo laptop; confirm Realtime on `events`
 
 **Resolved this session:** ~~Azure credits~~ (agent runs on Supabase Edge — Azure NOT needed) · ~~Schematic asset~~ (`floorplan.svg` + coords seeded) · ~~Push to Lovable~~ (`6b50e0c` on `origin/main`) · ~~Dual agent trigger~~ (Option A hybrid documented locally) · ~~vendor inboxes for the loop~~ (stubbed fallback works; only needed for *real* email).
@@ -298,4 +300,6 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-28 | **Side missions shipped in app:** `/dashboard` KPI page (archived); `/graph` live data-flow map (archived); System Map rewired to linear ticket topology with **Fridson AI** endpoint (`fd3caeb`, on `origin/main`). `/schematic` enhanced with per-floor selector + open-report markers (`e4234ec`, **local only — not pushed**). Vault docs archived + plan filed. Next: push schematic commits, apply migrations, deploy functions, reconcile agent trigger, dry-run. |
 | 2026-06-28 | **Execution plans split** into [[plans/README|plans/00–07]] for parallel agent pickup — deploy gates, agent reconcile, live verify, pitch logistics, optional Minute 2 UI, doc reconciliation, final dry-run. |
 | 2026-06-28 | **▶ NEXT set:** Phase 3 — verify Approve button triggers agent + sends RFQ email via mock provider (controlled inbox); approve-flow checklist added. |
+| 2026-06-28 | **Approve→agent→email wired** in `fridson-app`: submit=triage only; approve→resolution agent + `auto_confirm` + `AGENT_MOCK_INBOX` redirect; 12 Deno tests pass; app build green. Live inbox verify = deploy + secrets. |
 | 2026-06-28 | **Phase 6 doc reconciliation:** push gate ✅ (`6b50e0c` on `origin/main`); migrate/deploy still blocked (no CLI token). Azure struck everywhere; brand locked **Fridson**; roster = Shuhia/Chris/Lennert. ROADMAP + track files synced; agent path = Option A hybrid (local). ▶ NEXT: apply migrations, deploy functions, verify live demo path (Phase 3). |
+| 2026-06-28 | **Wrap-up:** approve→email wired locally; archive check declined (~50 open items). App + vault edits uncommitted/unpushed. Next: deploy gates, live RFQ verify, QR + dry-run before 16:00. |

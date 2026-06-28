@@ -39,7 +39,8 @@
 
 ## Recent Captures
 *Inbox clear · 2026-06-28 (wrap-up)*
-- [[02-Projects/fridson/plans/README|Execution plans 00–07]] executed — hybrid agent path, stakeholder Context tab, pitch logistics docs
+- **Approve→agent→email wired** in `fridson-app` (local): submit=triage only; Approve dispatches resolution agent + `AGENT_MOCK_INBOX` redirect; 12 Deno tests pass — **not yet pushed/deployed**
+- [[02-Projects/fridson/plans/README|Execution plans 00–07]] — hybrid agent path, stakeholder Context tab, pitch logistics docs
 - [[02-Projects/fridson/plans/DEPLOY-BLOCKER-REPORT|Deploy blocker report]] — Supabase migrate/deploy blocked on CLI token
-- App pushed `c77bc42` — schematic + Context UI + Option A agent path · [fridson.lovable.app](https://fridson.lovable.app)
-- Brand locked **Fridson** · [[02-Projects/fridson/pitch/dry-run-checklist|Dry-run checklist]] · [[02-Projects/fridson/pitch/qr-codes|QR codes]]
+- App on Lovable `c77bc42` · [fridson.lovable.app](https://fridson.lovable.app) · brand locked **Fridson**
+- [[02-Projects/fridson/pitch/dry-run-checklist|Dry-run checklist]] · [[02-Projects/fridson/pitch/qr-codes|QR codes]]
