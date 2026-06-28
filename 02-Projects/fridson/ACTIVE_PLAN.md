@@ -203,6 +203,22 @@ Tie-breaker (from source of truth): **"80% quality + lower cost + faster = a win
 - [ ] Every live beat has a tested fallback
 - [ ] Each minute maps to its source-of-truth section
 
+## Phase 8 — Real Office System & Market Validation
+*Post-Z2D / parallel track — model the actual hackathon venue (byFounders **The Shack**, Kanonbådsvej 2) and validate the product with real office managers.*
+
+- [ ] 🤝 **Inventory nodes & tickets with the team** — walk The Shack and adjacent spaces; list every reportable asset and issue type not covered by the 5 demo seeds; agree on new ticket types and system-map nodes to add
+- [ ] 🤝 **The Shack floorplan + ticket map** — obtain or recreate the exact byFounders "The Shack" layout; place each asset and ticket type on the floorplan with `floor` + x/y coords (extend or replace seeded `floorplan.svg`); QR codes per mapped asset
+- [ ] 🧑 **Cold-call office managers we know** — final validation round: pitch the scan→approve flow, capture objections and quotes, note which issue types resonate; log outcomes in vault
+- [ ] 🤖 **Verify agent research + quote email E2E** — on live stack (`process-research` + `agent`): approve a contractor-routed ticket → confirm research runs (`FIRECRAWL_API_KEY`) → RFQ email lands in `AGENT_MOCK_INBOX` with correct report + provider context; see [[plans/LIVE-VERIFY-RUNBOOK|Live Verify Runbook]] Gates 3–5
+
+**Verification checklist:**
+- [ ] Team agrees on ≥5 new assets/tickets beyond the demo seed set (or documents why fewer)
+- [ ] Floorplan matches The Shack layout legibly when projected; every live ticket pins to the correct spot
+- [ ] ≥3 office-manager calls logged with at least one actionable quote or objection
+- [ ] One approved ticket produces visible research activity + one RFQ in the controlled inbox
+
+**Anti-pattern guards:** don't block the Sun 16:00 demo on this phase — demo seeds stay the fallback; don't cold-call without a one-line pitch script; label any pre-fetched research as such in notes.
+
 ---
 
 ## Event Schedule (reference)
@@ -309,3 +325,4 @@ $25,000 cloud credits · Copenhagen workspace (The Shack, Antler, Microsoft) · 
 | 2026-06-28 | **Human queue cleared:** demo hardware confirmed, Cursor Pro upgraded, Memtrace checked on Z2D dashboard. Human-Action Queue empty — remaining logistics: QR prints, Milestone 2, dry-run. |
 | 2026-06-28 | **Logistics:** Day 2 check-in done; MVP QR codes printed (hero `meeting-4f` — full 5-asset set not required). Remaining: deploy gates, Milestone 2 (15:00), dry-run (16:00). |
 | 2026-06-28 | **Milestone 2 submitted** on Z2D dashboard (15:00). Remaining before judging: deploy gates (optional for fallback demo), full dry-run, live demo 16:00. |
+| 2026-06-28 | **Phase 8 added** — real office inventory, The Shack floorplan mapping, office-manager cold calls, agent research + quote email E2E verify. |
