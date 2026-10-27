@@ -23,3 +23,4 @@ memory/
 # The actual app — separate git repo (github.com/westsoever/fridson-app), cloned
 # here so agents can edit it from this workspace. Not tracked by the knowledgespace.
 fridson-app/
+.claude-flow/
